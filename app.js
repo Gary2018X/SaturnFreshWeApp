@@ -10,7 +10,7 @@ App({
       success: function (res) {
       }
     });
-
+// test
     const updateManager = wx.getUpdateManager();
     wx.getUpdateManager().onUpdateReady(function() {
       wx.showModal({
