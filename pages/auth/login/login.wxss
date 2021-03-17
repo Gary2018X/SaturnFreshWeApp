@@ -18,7 +18,7 @@
 }
 
 .wx-login{
-  background: #1EAC52;
+  background: #ffe65c;
   color: #FFFFFF;
   font-size: 32rpx;
 }

@@ -27,7 +27,7 @@
 
 .side .active {
   background: #fff;
-  color: #39b54a;
+  color: #ffe65c;
   position: relative;
 }
 
@@ -39,7 +39,7 @@
   transform: translateY(-50%);
   width: 6rpx;
   height: 40rpx;
-  background: #39b54a;
+  background: #ffe65c;
 }
 
 /* 二级目录 */
@@ -91,8 +91,8 @@
 }
 
 .childClassify .scroll-view .item.active {
-  border: 1rpx solid #39b54a;
-  color: #39b54a;
+  border: 1rpx solid #ffe65c;
+  color: #ffe65c;
 }
 
 .childClassify .allClassify {
@@ -125,8 +125,8 @@
 }
 
 .childClassify .list.active {
-  border: 1rpx solid #39b54a;
-  color: #39b54a;
+  border: 1rpx solid #ffe65c;
+  color: #ffe65c;
 }
 
 /* 商品列表 */

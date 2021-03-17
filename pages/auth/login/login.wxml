@@ -1,6 +1,6 @@
 <view class="login">
 
-  <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/logo.png" class="logo-img"></image>
+  <image style="width:400rpx" src="/static/images/logo.png" class="logo-img"></image>
   <view class="bg-white radius-card">
     <view>
       <button class="wx-login" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信用户一键登录</button>

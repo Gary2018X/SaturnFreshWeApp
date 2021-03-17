@@ -25,7 +25,7 @@
       </view>
 
       <!-- banner -->
-      <swiper class="index-banner" id="banner" indicator-color="#fff" indicator-active-color="#36B546" indicator-dots="true" autoplay="true" interval="3000" duration="200" class="padding-lr-sm">
+      <swiper class="index-banner" id="banner" indicator-color="#fff" indicator-active-color="#ffe65c" indicator-dots="true" autoplay="true" interval="3000" duration="200" class="padding-lr-sm">
         <swiper-item class="swiper-item-img" wx:for="{{banner}}" wx:key="id">
             <image src="{{swiperImgPrefix + item.url}}" background-size="cover" data-link="{{item.link}}" bindtap="goAdLink"></image>
         </swiper-item>
