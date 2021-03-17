@@ -523,7 +523,7 @@ Page({
 
     that.setData({
       fixedCategory: !(event.scrollTop >= app.globalData.fixedTop),
-      showTopBtn: event.scrollTop > 1100,
+      showTopBtn: event.scrollTop > 1300,
       scrollTop: event.scrollTop
     })
   }, 50),

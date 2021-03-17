@@ -110,7 +110,45 @@
       </view>
     </view>
     -->
-    <!-- 热销商品 -->
+    <!-- 猜你喜欢 -->
+    <view class="hot-sale">
+      <view class="hot-sale-title">
+        <text class="iconfont iconrexiaobang"></text>
+        <text style="margin-right: 20rpx; margin-left: 6rpx">猜你喜欢</text>
+      </view>
+      <view class="more-icon" bindtap="">更多<text class="iconfont iconquanbudingdan skill-more-icon"></text></view>
+    </view>
+    <view class="list-wrap-con">
+        <view class="padding-lr-sm goodsList">
+          <view class="bg-white goods-list-item">
+            <view bindtap="goClassify" class="shop-big-img" data-id="{{shopListPicData.id}}" wx:if="{{cateGoryActive !== 0}}">
+              <image src="{{swiperImgPrefix + shopListPicData.picUrl}}" class="classifyImg"></image>
+            </view>
+            <view class="padding-wrap" wx:if="{{cateGoryActive !== 0}}"></view>
+            <view class="shop-list">
+              <view wx:for="{{shopListData}}" wx:for-index="index" wx:for-item="item" wx:key="index" class="shop-list-item item">
+                <navigator url="../goods/goods?id={{item.id}}" hover-class="none">
+                  <view class="img">
+                    <image src="{{swiperImgPrefix + item.picUrl}}" mode="widthFix"></image>
+                    <image src="{{swiperImgPrefix + item.picUrl}}" class="animation {{item.displayFlag ? '' : 'on'}}" style="left: {{item.animationX}}px; top: {{item.animationY}}px;" mode="widthFix"></image>
+                  </view>
+                  <view class="margin-tb-sm name shop-name">{{item.name}}</view>
+                  <view>
+                    <text class="text-price text-orange text-lg">{{item.retailPrice}}</text>
+                    <text class="text-price text-grey text-line" style="margin-left: 20rpx">{{item.marketPrice}}</text>
+                  </view>
+                </navigator>
+
+                <view class="iconfont iconjian avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart">
+                  <text class="tag badge bg-orange" wx:if="{{value.number}}">{{item.number}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+<!-- 热销榜 -->
+<!--  
     <view class="hot-sale">
       <view class="hot-sale-title">
         <text class="iconfont iconrexiaobang"></text>
@@ -134,13 +172,13 @@
         </view>
       </scroll-view>
     </view>
-
+-->
     <!-- 商品区域 -->
     <view class="shop-list-wrap">
 
       <view class="list-wrap-header">
-        <view class="list-wrap-fixed {{!fixedCategory ? 'fixed-category' : ''}}" id="fixed-header" wx:if="!clickSelectClassify">
-          <scroll-view class="scroll-header" scroll-x="true" style="width: 100%; height: 100%">
+        <!-- <view class="list-wrap-fixed {{!fixedCategory ? 'fixed-category' : ''}}" id="fixed-header" wx:if="!clickSelectClassify"> -->
+          <scroll-view class="scroll-header" scroll-x="true" style="width: 100%; height: 100%"> 
             <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{0}}">
               <view class="time-shop-t {{cateGoryActive === 0 ? 'active-shop-t' : ''}}">新品上市</view>
               <view class="time-shop-b {{cateGoryActive === 0 ? 'active-shop-b' : ''}}">立即抢购</view>
@@ -149,8 +187,8 @@
               <view class="time-shop-t {{cateGoryActive === item.id ? 'active-shop-t' : ''}}">{{item.name}}</view>
               <view class="time-shop-b {{cateGoryActive === item.id ? 'active-shop-b' : ''}}">{{item.desc}}</view>
             </view>
-          </scroll-view>
-        </view>
+          </scroll-view> 
+        <!-- </view> -->
       </view>
 
       <view class="list-wrap-con">
