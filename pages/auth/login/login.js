@@ -37,21 +37,35 @@ Page({
     })
 
   },
-  login: function () {
+  login: function (e) {
+    let that = this;
+    // console.log(e.detail)
     wx.login({
       success(res) {
         util.request('http://localhost:8000/auth/getSessionKeyByCode/', {
           code: res.code,
+          user_info:e.detail.userInfo
         }, 'POST').then(res => {
-          if (res.errno === 0) {
-            wx.setStorageSync('openId', res.data);
+          if (res.code === 200) {
+            wx.setStorageSync('openId', res.data.openid);
             that.setData({
-              sessionKey: res.data
+              sessionKey: res.data.session_key
             })
+            wx.setStorageSync('userInfo', e.detail.userInfo);
+            wx.setStorageSync('token', res.data.session_key);
+            app.globalData.hasLogin = true;
+            app.globalData.tabBarCartNum = res.data.cartGoodsCount;
+            successToast("登录成功");
+            setTimeout(() => {
+              wx.switchTab({
+                url: '/pages/ucenter/index/index'
+              });
+            }, 600)
           }
         })
       }
     })
+    console.log(that.data)
   },
   wxLogin: function (e) {
     if (e.detail.userInfo == undefined) {
