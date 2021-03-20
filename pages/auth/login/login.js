@@ -12,13 +12,13 @@ Page({
   data: {
 
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
 
   },
-  onReady: function() {
+  onReady: function () {
 
   },
-  onShow: function() {
+  onShow: function () {
     // 页面显示
     let that = this;
     wx.login({
@@ -37,8 +37,23 @@ Page({
     })
 
   },
-
-  wxLogin: function(e) {
+  login: function () {
+    wx.login({
+      success(res) {
+        util.request('http://localhost:8000/auth/getSessionKeyByCode/', {
+          code: res.code,
+        }, 'POST').then(res => {
+          if (res.errno === 0) {
+            wx.setStorageSync('openId', res.data);
+            that.setData({
+              sessionKey: res.data
+            })
+          }
+        })
+      }
+    })
+  },
+  wxLogin: function (e) {
     if (e.detail.userInfo == undefined) {
       app.globalData.hasLogin = false;
       util.showErrorToast('微信登录失败');
@@ -94,7 +109,7 @@ Page({
 
   },
 
-  accountLogin: function() {
+  accountLogin: function () {
     navigateTo("/pages/auth/phoneLogin/phoneLogin");
   },
 
