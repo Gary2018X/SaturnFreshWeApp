@@ -1,5 +1,5 @@
 var api = require('../config/api.js');
-
+var utilMd5 = require('../utils/md5.js');  
 function formatTime(date, type) {
   // debugger;
   var year = date.getFullYear();
@@ -33,7 +33,9 @@ function request(url, data = {}, method = "GET") {
       method: method,
       header: {
         'Content-Type': 'application/json',
-        'X-Token': wx.getStorageSync('token')
+        'X-Token': wx.getStorageSync('token'),
+        'timestamp': Date.now(),
+        'sign': utilMd5.hexMD5('SaturnFresh'+String(Date.now())),
       },
       success: function(res) {
 
