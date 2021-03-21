@@ -42,7 +42,7 @@ Page({
     // console.log(e.detail)
     wx.login({
       success(res) {
-        util.request('http://localhost:8000/auth/getSessionKeyByCode/', {
+        util.request(api.getSessionKeyByCode, {
           code: res.code,
           user_info:e.detail.userInfo
         }, 'POST').then(res => {
