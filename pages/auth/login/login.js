@@ -20,21 +20,21 @@ Page({
   },
   onShow: function () {
     // 页面显示
-    let that = this;
-    wx.login({
-      success(res) {
-        util.request(api.getSessionKeyByCode, {
-          code: res.code,
-        }, 'POST').then(res => {
-          if (res.errno === 0) {
-            wx.setStorageSync('openId', res.data);
-            that.setData({
-              sessionKey: res.data
-            })
-          }
-        })
-      }
-    })
+    // let that = this;
+    // wx.login({
+    //   success(res) {
+    //     util.request(api.getSessionKeyByCode, {
+    //       code: res.code,
+    //     }, 'POST').then(res => {
+    //       if (res.errno === 0) {
+    //         wx.setStorageSync('openId', res.data);
+    //         that.setData({
+    //           sessionKey: res.data
+    //         })
+    //       }
+    //     })
+    //   }
+    // })
 
   },
   login: function (e) {
