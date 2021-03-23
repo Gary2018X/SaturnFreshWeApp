@@ -285,10 +285,10 @@ page{
   padding: 0 20rpx;
 }
 .active-shop-t{
-  color: #3AB44B;
+  color: #c7efd5;
 }
 .active-shop-b{
-  background: #3AB44B;
+  background: #c7efd5;
   color: #FFFFFF;
   border-radius: 20rpx;
 }

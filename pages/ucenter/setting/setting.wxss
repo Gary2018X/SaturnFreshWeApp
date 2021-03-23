@@ -7,3 +7,13 @@
   padding: 20rpx;
   margin-top: 40rpx;
 }
+.butcs
+{
+  width: 80%;
+  background-color: #fff45c;
+  border-radius: 98rpx; 
+  color: #fff;
+}
+.butcs::after{
+  border:none; 
+}

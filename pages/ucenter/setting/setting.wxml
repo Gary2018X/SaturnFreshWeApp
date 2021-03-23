@@ -14,6 +14,6 @@
 </view>
 
 <view class="logout-btn">
-  <button wx:if="{{hasLogin}}" type="primary" loading="{{loading}}" plain="{{plain}}" bindtap="logout">退出登录</button>
-  <button wx:else type="primary" loading="{{loading}}" plain="{{plain}}" bindtap="enterLogin">去登录</button>
+  <button wx:if="{{hasLogin}}" class="butcs" loading="{{loading}}" plain="{{plain}}" bindtap="logout">退出登录</button>
+  <button wx:else class="butcs" loading="{{loading}}" plain="{{plain}}" bindtap="enterLogin">去登录</button>
 </view>

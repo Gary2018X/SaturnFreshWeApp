@@ -22,6 +22,10 @@
   color: #FFFFFF;
   font-size: 32rpx;
 }
+.wx-login::after
+{
+  border: none;
+}
 .phone-login{
   font-size: 24rpx;
   color: #5F6EB1;
