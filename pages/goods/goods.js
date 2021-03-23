@@ -65,7 +65,7 @@ Page({
       isIphoneX: app.globalData.isIphoneX
     });
     this.getGoodsInfo();
-    this.getFoodsData();
+    // this.getFoodsData();//获取相关做法暂时不要
   },
 
   // 获取商品信息

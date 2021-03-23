@@ -12,33 +12,62 @@ Page({
   data: {
 
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
 
   },
-  onReady: function() {
+  onReady: function () {
 
   },
-  onShow: function() {
+  onShow: function () {
     // 页面显示
+    // let that = this;
+    // wx.login({
+    //   success(res) {
+    //     util.request(api.getSessionKeyByCode, {
+    //       code: res.code,
+    //     }, 'POST').then(res => {
+    //       if (res.errno === 0) {
+    //         wx.setStorageSync('openId', res.data);
+    //         that.setData({
+    //           sessionKey: res.data
+    //         })
+    //       }
+    //     })
+    //   }
+    // })
+
+  },
+  login: function (e) {
     let that = this;
+    // console.log(e.detail)
     wx.login({
       success(res) {
         util.request(api.getSessionKeyByCode, {
           code: res.code,
+          user_info:e.detail.userInfo
         }, 'POST').then(res => {
-          if (res.errno === 0) {
-            wx.setStorageSync('openId', res.data);
+          if (res.code === 200) {
+            wx.setStorageSync('openId', res.data.openid);
             that.setData({
-              sessionKey: res.data
+              sessionKey: res.data.session_key
             })
+            wx.setStorageSync('userInfo', e.detail.userInfo);
+            wx.setStorageSync('token', res.data.session_key);
+            app.globalData.hasLogin = true;
+            app.globalData.tabBarCartNum = res.data.cartGoodsCount;
+            successToast("登录成功");
+            setTimeout(() => {
+              wx.switchTab({
+                url: '/pages/ucenter/index/index'
+              });
+            }, 600)
           }
         })
       }
     })
-
+    console.log(that.data)
   },
-
-  wxLogin: function(e) {
+  wxLogin: function (e) {
     if (e.detail.userInfo == undefined) {
       app.globalData.hasLogin = false;
       util.showErrorToast('微信登录失败');
@@ -94,7 +123,7 @@ Page({
 
   },
 
-  accountLogin: function() {
+  accountLogin: function () {
     navigateTo("/pages/auth/phoneLogin/phoneLogin");
   },
 

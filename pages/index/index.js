@@ -184,16 +184,17 @@ Page({
     });
 
     this.getIndexData();
-    this.getIndexSkillData();
-    this.fetchDelicacyData();
+    // this.getIndexSkillData();
+    // this.fetchDelicacyData();
 
-    if (this.data.hasLogin) {
-      this.getIndexCouponData();
-    } else {
-      this.getIndexNewPeopleCoupon()
-    }
+    // 优惠券暂时不做
+    // if (this.data.hasLogin) {
+    //   this.getIndexCouponData();
+    // } else {
+    //   this.getIndexNewPeopleCoupon()
+    // }
 
-
+    wx.hideLoading();
     // 设置tabBar购物车数量
     if (app.globalData.tabBarCartNum !== 0) {
       util.tabBarCartNum(0)
@@ -209,8 +210,8 @@ Page({
 
   onShareAppMessage: function() {
     return {
-      title: '牛牛优选',
-      desc: '牛牛优选商城',
+      title: '土星生鲜',
+      desc: '土星生鲜就是不一样',
       path: '/pages/index/index'
     }
   },
@@ -218,8 +219,8 @@ Page({
   onPullDownRefresh() {
     wx.showNavigationBarLoading(); //在标题栏中显示加载
     this.getIndexData();
-    this.getIndexSkillData();
-    this.fetchDelicacyData();
+    // this.getIndexSkillData();
+    // this.fetchDelicacyData();
     wx.hideNavigationBarLoading(); //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
   },
@@ -523,7 +524,7 @@ Page({
 
     that.setData({
       fixedCategory: !(event.scrollTop >= app.globalData.fixedTop),
-      showTopBtn: event.scrollTop > 1100,
+      showTopBtn: event.scrollTop > 1300,
       scrollTop: event.scrollTop
     })
   }, 50),

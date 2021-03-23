@@ -2782,7 +2782,7 @@ scroll-view.steps .item {
 }
 
 .bg-green {
-  background-color: var(--green);
+  background-color: #ffe65c;
   color: var(--white);
 }
 
@@ -3274,7 +3274,7 @@ scroll-view.steps .item {
 
 .iconjian, .iconjia{
   font-size: 40rpx;
-  color: #3AB44B;
+  color: #ffe65c;
 }
 
 

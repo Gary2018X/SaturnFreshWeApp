@@ -28,18 +28,18 @@ Page({
         userInfo: userInfo,
         hasLogin: true
       });
-
+      // console.log(userInfo);
       let that = this;
-      util.request(api.UserIndex).then(function(res) {
-        if (res.errno === 0) {
-          that.setData({
-            order: res.data.order,
-            balanceMoney: res.data.balanceMoney,
-            coupon: res.data.coupon,
-            userIntegration: res.data.userIntegration,
-          });
-        }
-      });
+      // util.request(api.UserIndex).then(function(res) {
+      //   if (res.errno === 0) {
+      //     that.setData({
+      //       order: res.data.order,
+      //       balanceMoney: res.data.balanceMoney,
+      //       coupon: res.data.coupon,
+      //       userIntegration: res.data.userIntegration,
+      //     });
+      //   }
+      // });
     } else {
       this.setData({
         userInfo: {
