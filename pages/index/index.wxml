@@ -139,7 +139,8 @@
                   </view>
                 </navigator>
 
-                <view class="iconfont iconjian avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart">
+                <!-- <view class="iconfont iconjian avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart">  -->
+                  <view  class="avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart"><image src="/static/images/icon-join.png" style="width:40rpx;height:40rpx"></image> 
                   <text class="tag badge bg-orange" wx:if="{{value.number}}">{{item.number}}</text>
                 </view>
               </view>
@@ -212,7 +213,8 @@
                   </view>
                 </navigator>
 
-                <view class="iconfont iconjian avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart">
+                <!-- <view class="iconfont iconjian avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart"> -->
+                  <view  class="avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart"><image src="/static/images/icon-join.png" style="width:40rpx;height:40rpx"></image> 
                   <text class="tag badge bg-orange" wx:if="{{value.number}}">{{item.number}}</text>
                 </view>
               </view>

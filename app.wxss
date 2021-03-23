@@ -2783,7 +2783,7 @@ scroll-view.steps .item {
 
 .bg-green {
   background-color: #ffe65c;
-  color: var(--white);
+  color: var(--black);
 }
 
 .bg-cyan {

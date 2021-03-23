@@ -54,7 +54,9 @@
     <view class="flex justify-end align-center addRemoveNum">
       <view class="iconfont iconjia round" wx:if="{{item.number > 0}}" bindtap="cutNumber" data-item-index="{{index}}"></view>
       <input class="text-center" wx:if="{{item.number > 0}}" value="{{item.number}}" disabled="true" type="number" />
-      <view class="iconfont iconjian round" bindtap="addNumber" data-item-index="{{index}}"></view>
+       <!-- <view class="iconfont iconjian round" bindtap="addNumber" data-item-index="{{index}}"></view>  -->
+       <view class="imgcs" bindtap="addNumber" data-item-index="{{index}}"><image src="/static/images/icon-join.png" style="width:40rpx;height:40rpx"></image></view>
+      
     </view>
   </view>
 
