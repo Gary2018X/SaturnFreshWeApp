@@ -111,6 +111,7 @@
     </view>
     -->
     <!-- 猜你喜欢 -->
+     <!-- 
     <view class="hot-sale">
       <view class="hot-sale-title">
         <text class="iconfont iconrexiaobang"></text>
@@ -138,9 +139,9 @@
                     <text class="text-price text-grey text-line" style="margin-left: 20rpx">{{item.marketPrice}}</text>
                   </view>
                 </navigator>
-
+-->
                 <!-- <view class="iconfont iconjian avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart">  -->
-                  <view  class="avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart"><image src="/static/images/icon-join.png" style="width:40rpx;height:40rpx"></image> 
+                <!--   <view  class="avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart"><image src="/static/images/icon-join.png" style="width:40rpx;height:40rpx"></image> 
                   <text class="tag badge bg-orange" wx:if="{{value.number}}">{{item.number}}</text>
                 </view>
               </view>
@@ -148,6 +149,7 @@
           </view>
         </view>
       </view>
+       -->
 <!-- 热销榜 -->
 <!--  
     <view class="hot-sale">
@@ -230,6 +232,43 @@
   </scroll-view>
 </view>
 
+<view class="hot-sale">
+      <view class="hot-sale-title">
+        <text class="iconfont iconrexiaobang"></text>
+        <text style="margin-right: 20rpx; margin-left: 6rpx">猜你喜欢</text>
+      </view>
+      <view class="more-icon" bindtap="">更多<text class="iconfont iconquanbudingdan skill-more-icon"></text></view>
+    </view>
+    <view class="list-wrap-con">
+        <view class="padding-lr-sm goodsList">
+          <view class="bg-white goods-list-item">
+            <view bindtap="goClassify" class="shop-big-img" data-id="{{shopListPicData.id}}" wx:if="{{cateGoryActive !== 0}}">
+              <image src="{{swiperImgPrefix + shopListPicData.picUrl}}" class="classifyImg"></image>
+            </view>
+            <view class="padding-wrap" wx:if="{{cateGoryActive !== 0}}"></view>
+            <view class="shop-list">
+              <view wx:for="{{shopListData}}" wx:for-index="index" wx:for-item="item" wx:key="index" class="shop-list-item item">
+                <navigator url="../goods/goods?id={{item.id}}" hover-class="none">
+                  <view class="img">
+                    <image src="{{swiperImgPrefix + item.picUrl}}" mode="widthFix"></image>
+                    <image src="{{swiperImgPrefix + item.picUrl}}" class="animation {{item.displayFlag ? '' : 'on'}}" style="left: {{item.animationX}}px; top: {{item.animationY}}px;" mode="widthFix"></image>
+                  </view>
+                  <view class="margin-tb-sm name shop-name">{{item.name}}</view>
+                  <view>
+                    <text class="text-price text-orange text-lg">{{item.retailPrice}}</text>
+                    <text class="text-price text-grey text-line" style="margin-left: 20rpx">{{item.marketPrice}}</text>
+                  </view>
+                </navigator>
+
+                <!-- <view class="iconfont iconjian avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart">  -->
+                  <view  class="avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart"><image src="/static/images/icon-join.png" style="width:40rpx;height:40rpx"></image> 
+                  <text class="tag badge bg-orange" wx:if="{{value.number}}">{{item.number}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
 <!-- 优惠券弹框 -->
 <!-- wx:if="{{hasLogin && couponTimeSign && couponModel && couponData.length > 0}}" -->
 <!--  
