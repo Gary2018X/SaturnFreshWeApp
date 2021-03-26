@@ -13,6 +13,7 @@ var WxApiRoot = 'http://localhost:8000/wx/';
 
 module.exports = {
   IndexUrl: WxApiRoot + 'home/page/', //首页数据接口
+  Recommend: WxApiRoot + 'recommend/', //猜你喜欢接口
   CatalogList: WxApiRoot + 'catalog/index/', //分类目录全部分类数据接口
   CatalogCurrent: WxApiRoot + 'catalog/current/', //分类目录当前分类数据接口
 
@@ -54,7 +55,7 @@ module.exports = {
   SearchIndex: WxApiRoot + 'search/index/', //搜索关键字
   SearchResult: WxApiRoot + 'search/result/', //搜索结果
   SearchHelper: WxApiRoot + 'search/helper/', //搜索帮助
-  SearchClearHistory: WxApiRoot + 'search/clearhistory/', //搜索历史清楚
+  SearchClearHistory: WxApiRoot + 'search/clearhistory/', //搜索历史清除
 
   AddressList: WxApiRoot + 'address/list/', //收货地址列表
   AddressDetail: WxApiRoot + 'address/detail/', //收货地址详情
