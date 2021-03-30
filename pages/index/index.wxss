@@ -234,9 +234,12 @@ page{
 .shop-list-wrap{
   background: #F6F6F6;
   padding-top: 20rpx;
-  min-height: 1800rpx;
+  min-height: 0rpx;
 }
-
+.hr1{
+  background-color: #f5f5f5;
+  height: 20rpx;
+}
 .list-wrap-header{
   width: 100%;
   height: 140rpx;
