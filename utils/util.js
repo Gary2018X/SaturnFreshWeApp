@@ -92,12 +92,12 @@ function tabBarCartNum(num) {
 
   if (getApp().globalData.tabBarCartNum !== 0) {
     wx.setTabBarBadge({
-      index: 3,
+      index: 2,
       text: `${getApp().globalData.tabBarCartNum}`,
     })
   } else {
     wx.removeTabBarBadge({
-      index: 3,
+      index: 2,
     })
   }
 }

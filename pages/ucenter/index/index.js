@@ -30,16 +30,16 @@ Page({
       });
       // console.log(userInfo);
       let that = this;
-      // util.request(api.UserIndex).then(function(res) {
-      //   if (res.errno === 0) {
-      //     that.setData({
-      //       order: res.data.order,
-      //       balanceMoney: res.data.balanceMoney,
-      //       coupon: res.data.coupon,
-      //       userIntegration: res.data.userIntegration,
-      //     });
-      //   }
-      // });
+      util.request(api.UserIndex).then(function(res) {
+         if (res.errno === 0) {
+           that.setData({
+             order: res.data.order,
+             balanceMoney: res.data.balanceMoney,
+             coupon: res.data.coupon,
+             userIntegration: res.data.userIntegration,
+           });
+         }
+       });
     } else {
       this.setData({
         userInfo: {
@@ -64,7 +64,7 @@ Page({
       util.tabBarCartNum(0)
     } else {
       wx.removeTabBarBadge({
-        index: 3,
+        index: 2,
       })
     }
   },

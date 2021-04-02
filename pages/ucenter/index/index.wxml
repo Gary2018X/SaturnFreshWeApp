@@ -19,7 +19,7 @@
         <view class="padding-xs">
           <text class="user-info-num">{{balanceMoney}}</text>
         </view>
-        <view class="" style="color:#8799a3">{{balanceMoney == 0 ? '余额' : '欠款'}}</view>
+        <view class="" style="color:#8799a3">{{balanceMoney >= 0 ? '余额' : '欠款'}}</view>
       </view>
       <view bindtap='goCoupon'>
         <view class="padding-xs">
