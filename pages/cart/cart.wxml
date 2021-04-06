@@ -56,7 +56,10 @@
 
   <!-- 猜你喜欢 -->
   <view wx:if="{{recommend.length > 0}}">
-    <view class="text-lg text-center margin-top-xl margin-bottom">猜你喜欢</view>
+    <view class="cart-like padding-lr-sm radius-card">
+      <image src="/static/images/sta-like.png" style="width:50rpx;height:40rpx"></image>
+    <view class="like-font text-center">猜你喜欢</view>
+    </view>
     <view class="flex flex-wrap padding-lr-xs recommend">
       <view class="bg-white radius-card margin-bottom-sm padding-sm item" wx:for="{{recommend}}" wx:key="id">
         <navigator url="../goods/goods?id={{item.id}}" hover-class="none">
@@ -69,7 +72,8 @@
           </view>
         </navigator>
 
-        <view class="iconfont iconjian avatar like-add-btn" data-item-index="{{index}}" bindtap="addToCart">
+        <view class="avatar like-add-btn" data-item-index="{{index}}" bindtap="addToCart">
+          <image src="/static/images/icon-join.png" style="width:40rpx;height:40rpx"></image> 
         <text wx:if="{{item.number}}" class="tag badge bg-orange">{{item.number}}</text>
         </view>
       </view>
