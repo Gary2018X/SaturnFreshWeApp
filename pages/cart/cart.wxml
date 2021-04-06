@@ -22,11 +22,11 @@
     <!-- 列表 -->
     <view class="bg-white radius-card margin-sm padding-lr-sm padding-top-lg cartGoods">
 
-      <view wx:for="{{cartGoods}}" wx:key="id">
-        <view class="flex justify-between align-center margin-bottom-sm">
-          <checkbox class="round" checked="{{item.checked ? true : false}}" wx:if="{{item.isValidate}}" bindtap="checkedItem" data-item-index="{{index}}"></checkbox>
+      <view wx:for="{{cartGoods}}" wx:key="id" >
+        <view class="flex justify-between align-center margin-bottom-sm" bindlongpress="deleteItem2" >
+          <checkbox class="round" checked="{{item.checked ? true : false}}" wx:if="{{item.isValidate}}"   data-item-index="{{index}}"></checkbox>
 
-          <view class="goodsItem">
+          <view class="goodsItem" bindtap="checkedItem" >
 
             <navigator url="../goods/goods?id={{item.goodsId}}" hover-class="none" class="flex justify-between">
               <image src="{{swiperImgPrefix + item.picUrl}}"></image>

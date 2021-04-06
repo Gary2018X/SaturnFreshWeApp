@@ -86,6 +86,8 @@ Page({
       // console.log(res.data.cartList);
       res.data.cartList.map(item => {
         // 处理价格补0
+        console.log(item)
+        console.log(api.CartList)
         item.price = priceSupplement(item.price)
         item.marketPrice = priceSupplement(item.marketPrice)
         if(item.flashPrice) {
@@ -94,6 +96,9 @@ Page({
       })
       if (res.errno === 0) {
         res.data.cartTotal.checkedGoodsAmount = priceSupplement(res.data.cartTotal.checkedGoodsAmount)
+        
+        
+
         this.setData({
           cartGoods: res.data.cartList,
           cartTotal: res.data.cartTotal,
@@ -346,6 +351,7 @@ Page({
               });
               this.updateNumber();
 
+              
               // 改变全局购物车数量
               app.globalData.cartList = [];
               this.data.cartGoods.forEach(item => {
@@ -440,7 +446,72 @@ Page({
     });
 
   },
+  //删除事件，具体删除待完成
+  deleteItem2(event) {
+    wx.showModal({
+      title: '',
+      content: '要删除所选商品？',
+    });
+  },
+  //长按删除事件
+  deleteItem3(event) {
+    let that = this;
+    let iiindex = event.currentTarget.dataset.index;
+    let iindex = event.currentTarget.dataset.iindex;
+    let cartid = this.data.footprintList[index][iindex].id;
+    let goodsId = this.data.footprintList[index][iindex].goodsId;
+    var touchTime = that.data.touchEnd - that.data.touchStart;
+    // console.log(touchTime);
+    //如果按下时间大于350为长按
+    if (touchTime > 350) {
+      wx.showModal({
+        title: '',
+        content: '要删除所选商品？',
+        success: function(res) {
+          if (res.confirm) {
+            util.request(api.CartDelete, {
+              id: cartid
+            }, 'POST').then(function(res) {
+              if (res.errno === 0) {
+                wx.showToast({
+                  title: '删除成功',
+                  icon: 'success',
+                  duration: 2000
+                });
+                that.data.footprintList[iiindex].splice(iindex, 1)
+                if (that.data.footprintList[iiindex].length == 0) {
+                  that.data.footprintList.splice(index, 1)
+                }
+                that.setData({
+                  footprintList: that.data.footprintList
+                });
+              }
+            });
+          }
+        }
+      });
+    } else {
+      wx.navigateTo({
+        url: '/pages/goods/goods?id=' + goodsId,
+      });
+    }
 
+  },
+  //按下事件开始
+  touchStart: function(e) {
+    let that = this;
+    that.setData({
+      touchStart: e.timeStamp
+    })
+  },
+
+  //按下事件结束
+  touchEnd: function(e) {
+    let that = this;
+    that.setData({
+      touchEnd: e.timeStamp
+    })
+  },
   // 删除按钮
   deleteCart: function() {
     let goodsIds = this.data.cartGoods.filter(function(element, index, array) {
