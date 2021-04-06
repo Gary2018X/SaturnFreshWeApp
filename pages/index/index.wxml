@@ -203,7 +203,8 @@
             <text class="text-price text-grey text-line">{{item.marketPrice}}</text>
             <view class="no-num">NO.{{index + 1}}</view>
           </navigator>
-          <view class="iconfont iconjian avatar" data-item-index="{{index}}" bindtap="hotAddCart">
+          <view class=" avatar" data-item-index="{{index}}" bindtap="hotAddCart">
+            <image src="/static/images/icon-join.png" style="width:40rpx;height:40rpx"></image> 
             <text class="tag badge bg-orange" wx:if="{{item.number}}">{{item.number}}</text>
           </view>
         </view>

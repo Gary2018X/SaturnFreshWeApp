@@ -68,7 +68,7 @@ page{
 .goodsList .avatar {
   position: absolute;
   bottom: 30rpx;
-  right: 30rpx;
+  right: 10rpx;
 }
 
 .goodsList .img {

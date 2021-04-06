@@ -148,3 +148,18 @@ checkbox{
   border-bottom: 6px solid #F5F5F5;
   display: inline-block;
 }
+.cart-like
+{
+  height: 100rpx;
+  background-color: white;
+  margin-top: 50rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.like-font
+{
+  font-size: 30rpx;
+  font-weight: 800;
+}
