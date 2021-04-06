@@ -448,9 +448,49 @@ Page({
   },
   //删除事件，具体删除待完成
   deleteItem2(event) {
+    let itemIndex = event.currentTarget.dataset.itemIndex;
+    console.log(event)
+    let cartItem = this.data.cartGoods[itemIndex];
+    console.log(cartItem)
     wx.showModal({
       title: '',
       content: '要删除所选商品？',
+      success: res => {
+        if (res.confirm) {
+          util.request(api.CartDelete, {
+            cart: JSON.stringify([{
+              goodsId: cartItem.goodsId,
+              isFlashGoods: cartItem.isFlashGoods
+            }])
+          }, 'POST').then(res => {
+            if (res.errno === 0) {
+              this.setData({
+                cartGoods: res.data.cartList,
+                cartTotal: res.data.cartTotal
+              });
+            }
+
+            this.setData({
+              checkedAllStatus: this.isCheckedAll()
+            });
+            this.updateNumber();
+
+            
+            // 改变全局购物车数量
+            app.globalData.cartList = [];
+            this.data.cartGoods.forEach(item => {
+              app.globalData.cartList.push({
+                id: item.goodsId,
+                number: item.number
+              })
+            });
+            util.tabBarCartNum(-1);
+
+            // 更新猜你喜欢商品数量
+            this.recommendList()
+          });
+        } else if (res.cancel) {}
+      }
     });
   },
   //长按删除事件

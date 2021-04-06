@@ -23,7 +23,7 @@
     <view class="bg-white radius-card margin-sm padding-lr-sm padding-top-lg cartGoods">
 
       <view wx:for="{{cartGoods}}" wx:key="id" >
-        <view class="flex justify-between align-center margin-bottom-sm" bindlongpress="deleteItem2" >
+        <view class="flex justify-between align-center margin-bottom-sm" data-item-index="{{index}}" bindlongpress="deleteItem2" >
           <checkbox class="round" checked="{{item.checked ? true : false}}" wx:if="{{item.isValidate}}"   data-item-index="{{index}}"  bindtap="checkedItem"></checkbox>
 
           <view class="goodsItem">
