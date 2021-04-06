@@ -5,20 +5,20 @@
   <view class="answer">·很抱歉给您带来了不便，请您在订单签收后的48小时内联系我们，进入APP/小程序【我的】→【我的订单】→【全部订单】→点击对应的订单及商品→填写退款原因【申请退款】，客服会在工作时间1-4小时内审核办理。</view>
 </view>
 <view class="questions">
-  <text class="question">2、怎么修改i收获信息？</text>
+  <text class="question">2、怎么修改订单信息？</text>
   <view class="divLine"></view>
-  <view class="answer">·客户您好，下单后都不支持修改订单信息哦。
-    ·订单出库前，您可以进入APP修改
-  </view>
+  <view class="answer">·客户您好，下单后都不支持修改订单信息哦。</view>
+  <view class="answer">·订单出库前，您可以进入APP修改.</view>
 </view>
 <view class="questions">
-  <text class="question">3、违法与不良信息举报</text>
+  <text class="question">3、违法与不良信息如何举报？</text>
   <view class="divLine"></view>
   <view class="answer">·客户您好，关于违法与不良信息，我们的举报邮箱：1521930356@qq.com。</view>
 </view>
 <view style="display:flex;align-items:center;justify-content:center;">
 <image src="/static/images/help_bottom.gif" style="margin-bottom:10px;"></image>
 </view>
+<view class="bottom">---更多问题，请联系土星客服---</view>
 
 <!--<view class="bg-white radius-card padding-sm margin-sm">
   <view class="margin-bottom" wx:for="{{issueList}}" wx:key="id">

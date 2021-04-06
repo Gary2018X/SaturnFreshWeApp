@@ -97,10 +97,13 @@
             <view class="text-price text-orange text-lg">{{item.retailPrice}}</view>
             <view class="text-price text-grey text-line">{{item.marketPrice}}</view>
           </navigator>
-
-          <view class="iconfont iconjian avatar" data-goodsId="{{item.id}}" bindtap="addCart">
+          <view bindtap="addToCart" class="avatar like-add-btn" data-item-index="{{index}}">
+        <image src="/static/images/icon-join.png" style="width:20px;height:20px" role="img"></image>
+        <text wx:if="{{item.number}}" class="tag badge bg-orange">{{item.number}}</text>
+        </view>
+          <!--<view class="iconfont iconjian avatar" data-goodsId="{{item.id}}" bindtap="addCart">
           <text wx:if="{{item.number}}" class="tag badge bg-orange">{{item.number}}</text>
-          </view>
+          </view>-->
         </view>
       </view>
     </scroll-view>
