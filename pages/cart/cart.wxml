@@ -24,9 +24,9 @@
 
       <view wx:for="{{cartGoods}}" wx:key="id" >
         <view class="flex justify-between align-center margin-bottom-sm" bindlongpress="deleteItem2" >
-          <checkbox class="round" checked="{{item.checked ? true : false}}" wx:if="{{item.isValidate}}"   data-item-index="{{index}}"></checkbox>
+          <checkbox class="round" checked="{{item.checked ? true : false}}" wx:if="{{item.isValidate}}"   data-item-index="{{index}}"  bindtap="checkedItem"></checkbox>
 
-          <view class="goodsItem" bindtap="checkedItem" >
+          <view class="goodsItem">
 
             <navigator url="../goods/goods?id={{item.goodsId}}" hover-class="none" class="flex justify-between">
               <image src="{{swiperImgPrefix + item.picUrl}}"></image>
