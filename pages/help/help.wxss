@@ -1,0 +1,27 @@
+.top-text{
+font-size:35rpx;
+margin-left:5px;
+margin-top:10px;
+margin-bottom:10px;
+text-align: center;
+}
+.questions{
+  margin-bottom:15px;
+}
+.divLine{
+  background: #E0E3DA;
+  margin:5px 10px;
+  height:5rpx;
+ }
+.question{
+  margin-bottom:10px;
+  margin-left:10px;
+  font-size:25rpx;
+  color: #333333;
+}
+.answer{
+  margin-top:5px;
+  margin-left:10px;
+  font-size:25rpx;
+  color: #333333;
+}
