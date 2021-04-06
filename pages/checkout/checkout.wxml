@@ -105,32 +105,32 @@
   <!-- 付款方式 -->
   <view class="bg-white radius-card margin-sm padding-sm paymentType">
     <view>支付方式</view>
-<!--    <view class="flex justify-between align-center padding-tb-sm">-->
-<!--      <view class="fontIcon-rechargefill text-xxl text-green"></view>-->
-<!--      <view class="content">-->
-<!--        <view>-->
-<!--          账户支付-->
-<!--          <text class="text-price text-orange text-lg">{{accountPracticalPrice}}</text>-->
-<!--        </view>-->
-<!--        <view>-->
-<!--          账户余额-->
-<!--          <text class="text-price">{{balancePrice}}</text>-->
-<!--        </view>-->
-<!--      </view>-->
-<!--      <view>-->
-<!--        <switch class="green" bindchange="switchChange" checked="{{isAccountPay ? true : false}}"></switch>-->
-<!--      </view>-->
-<!--    </view>-->
+   <view class="flex justify-between align-center padding-tb-sm">
+      <view class="fontIcon-rechargefill text-xxl text-green"></view>
+      <view class="content">
+       <view>
+         账户支付
+          <text class="text-price text-orange text-lg">{{accountPracticalPrice}}</text>
+        </view>
+        <view>
+         账户余额
+          <text class="text-price">{{balancePrice}}</text>
+        </view>
+      </view>
+     <view>
+       <switch class="green" bindchange="switchChange" checked="{{isAccountPay ? true : false}}"></switch>
+      </view>
+    </view>
 
-<!--    <view class="flex justify-between align-center padding-tb-sm">-->
-<!--      <view class="fontIcon-redpacket text-xxl text-orange"></view>-->
-<!--      <view class="content">积分-->
-<!--        <text class="margin-left-sm text-green">余额兑积分，最高兑换{{integralPriceMax}}元</text>-->
-<!--      </view>-->
-<!--      <view class="flex align-center">-->
-<!--        <view class="fontIcon-right" bindtap="open"></view>-->
-<!--      </view>-->
-<!--    </view>-->
+    <view class="flex justify-between align-center padding-tb-sm">
+     <view class="fontIcon-redpacket text-xxl text-orange"></view>
+     <view class="content">积分
+        <text class="margin-left-sm text-green">余额兑积分，最高兑换{{integralPriceMax}}元</text>
+     </view>
+<view class="flex align-center">
+       <view class="fontIcon-right" bindtap="open"></view>
+     </view>
+   </view>
 
     <view class="flex justify-between align-center padding-tb-sm">
       <view class="fontIcon-weixin text-xxl text-green"></view>
