@@ -27,6 +27,8 @@ Page({
     minOrderTotal: 0, // 起步价
     gapOrderTotal: 0, // 差多少钱起送
     discounts: 0, // 优惠多少钱
+    hideNotice: false,
+    notice: '请和您的医生一起根据个体情况决定',
   },
   onPullDownRefresh() {
     wx.showNavigationBarLoading(); //在标题栏中显示加载
@@ -34,8 +36,8 @@ Page({
     wx.hideNavigationBarLoading(); //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
   },
+  
   onShow: function() {
-    // 页面显示
     if (app.globalData.hasLogin) {
       this.getCartList();
       this.recommendList();
@@ -57,8 +59,18 @@ Page({
         index: 3,
       })
     }
+   
+   
+  },
+  
+  switchNotice: function() {
+    this.setData({
+      hideNotice: true
+    })
   },
 
+
+     
   // 跳转登录界面
   goLogin() {
     wx.navigateTo({

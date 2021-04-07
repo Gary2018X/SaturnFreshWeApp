@@ -7,6 +7,10 @@
 .address .lastItem{
   padding: 30rpx !important;
 }
+.round1{
+  border-radius: 5000rpx;
+  background: #ffe65c;
+}
 
 .region-select {
   width: 100%;
@@ -145,9 +149,23 @@
 .address-input placeholder{
   color: red!important;
 }
+checkbox::before{
+  font-family: "fontIcon";
+  content: "\e645";
+  position: absolute;
+  color: var(--white) !important;
+  top: 50%;
+  margin-top: -8px;
+  right: 5px;
+  font-size: 32rpx;
+  line-height: 16px;
+  pointer-events: none;
+  transform: scale(1, 1);
+  transition: all 0.3s ease-in-out 0s;
+  z-index: 9;
+}
 
-
-radio::before, checkbox::before {
+radio::before {
   font-family: "fontIcon";
   content: "\e645";
   position: absolute;

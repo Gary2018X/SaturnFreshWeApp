@@ -163,3 +163,96 @@ checkbox{
   font-size: 30rpx;
   font-weight: 800;
 }
+@keyframes remindMessage {
+  0% {
+    -webkit-transform: translateX(90%);
+  }
+
+  100% {
+    -webkit-transform: translateX(-180%);
+  }
+}
+
+.tongzhitext {
+  margin-bottom: 100rpx;
+  margin-right:50rpx;
+  margin-left: 10rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tongzhi-text {
+  font-size: 28rpx;
+  animation: remindMessage 14s linear infinite;
+  width: 100%;
+  color: #d09868;
+  display: block;
+  position: absolute;
+  top:100rpx;
+}
+
+.notice-wrap {
+  background: #ffebda;
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #d09868;
+  font-size: 28rpx;
+}
+
+.closeView {
+  width: 45rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  position: absolute;
+  top:-5rpx;
+  left:15rpx;
+  text-align: center;
+  font-size: 35rpx;
+}
+.th-text {
+  width: 100%;
+  justify-content: center;
+  color: #000;
+  display: block;
+  height: 70rpx;
+  align-items: center;
+  max-height: 70rpx;
+}
+/*首页跑马灯效果*/
+@keyframes around {
+  from {
+   margin-left: 100%;
+  }
+  to {
+   /* var接受传入的变量 */
+   margin-left:10%;
+   /*margin-left: var(--marqueeWidth--);*/
+  }
+  }
+  
+ .marquee_container{
+  background-color: #fff45c;
+  height: 50rpx;
+  line-height: 44rpx;
+  position: relative;
+  width: 100%;
+  margin-top:0rpx;
+ }
+ .marquee_container:hover{
+  /* 不起作用 */
+  animation-play-state: paused;
+ }
+ .marquee_text{
+  color:#fff;
+  font-size: 28rpx;
+  font-weight: 600;
+  display: inline-block;
+  white-space: nowrap;
+  animation-name: around;
+  animation-duration: 10s; /*过渡时间*/
+  animation-iteration-count: infinite;
+  animation-timing-function:linear;
+ }
+ /*首页跑马灯效果*/

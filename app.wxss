@@ -3199,7 +3199,7 @@ scroll-view.steps .item {
 }
 
 .text-green, .line-green, .lines-green {
-  color: var(--green);
+  color: #ffe65c;
 }
 
 .text-cyan, .line-cyan, .lines-cyan {
