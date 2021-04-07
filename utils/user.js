@@ -100,6 +100,9 @@ function checkLogin() {
             }
           });
         }
+        else if (res.errno === 403){
+          reject(false);
+        }
       });
       checkSession().then(() => {
         resolve(true);
