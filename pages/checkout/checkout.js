@@ -124,6 +124,7 @@ Page({
           integralPriceMax: priceSupplement(arithmetic.round(arithmetic.multiply(this.data.integralUser, res.data.integrationExchange), 2)),
           integralUsable: priceSupplement(arithmetic.round(arithmetic.divide(arithmetic.multiply(this.data.integralUser, res.data.integrationExchange), res.data.integrationExchange), 2)),
           needPrice: priceSupplement(res.data.actualPrice),
+          accountPracticalPrice: priceSupplement(res.data.actualPrice),
           deliveryTimeDetail: timeStrOperate(res.data.deliveryTime),
         });
         console.log(timeStrOperate(res.data.deliveryTime));

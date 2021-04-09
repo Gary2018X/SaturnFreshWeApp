@@ -1,15 +1,31 @@
+<!--  
+<view class='notice-wrap' hidden='{{hideNotice}}'>
+　　<view class='tongzhitext'>
+　　　　<text class="tongzhi-text">{{notice}}</text>
+　　</view>
+　　<view bindtap='switchNotice' class="closeView">x</view>
+</view>
+-->
+<!-- <view style="height:10rpx;background-color:#f0f0f0"></view> -->
+<!--跑马灯 Linyufan.com-->
+<view class="marquee_container" style="--marqueeWidth--:-12em" hidden='{{hideNotice}}'>
+  <view bindtap='switchNotice' class="closeView">x</view>
+  <view class="marquee_text">提示：长按购物车商品可以删除哦！</view>
+</view>
+<!--跑马灯-->
 <!-- 未登录 -->
 <view class="no-login text-center" wx:if="{{!hasLogin}}">
   <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/noCart.png" />
   <view class="text-grey">还没有登录</view>
   <view class="btn bg-green lg margin-top radius" bindtap="goLogin">去登录</view>
 </view>
-
+ 
 <view wx:else>
+  <!-- 
   <view class="bg-white padding-sm text-right" wx:if="{{cartGoods.length > 0}}">
     <text bindtap="deleteCart">删除</text>
   </view>
-
+-->
   <!-- 购物车没有商品提示 -->
   <view class="no-cart text-center" wx:if="{{cartTotal.goodsCount == 0}}">
     <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/noCart.png" />
@@ -23,10 +39,10 @@
     <view class="bg-white radius-card margin-sm padding-lr-sm padding-top-lg cartGoods">
 
       <view wx:for="{{cartGoods}}" wx:key="id" >
-        <view class="flex justify-between align-center margin-bottom-sm" bindlongpress="deleteItem2" >
-          <checkbox class="round" checked="{{item.checked ? true : false}}" wx:if="{{item.isValidate}}"   data-item-index="{{index}}"></checkbox>
+        <view class="flex justify-between align-center margin-bottom-sm" data-item-index="{{index}}" bindlongpress="deleteItem2" >
+          <checkbox class="round" checked="{{item.checked ? true : false}}" wx:if="{{item.isValidate}}"   data-item-index="{{index}}"  bindtap="checkedItem"></checkbox>
 
-          <view class="goodsItem" bindtap="checkedItem" >
+          <view class="goodsItem">
 
             <navigator url="../goods/goods?id={{item.goodsId}}" hover-class="none" class="flex justify-between">
               <image src="{{swiperImgPrefix + item.picUrl}}"></image>

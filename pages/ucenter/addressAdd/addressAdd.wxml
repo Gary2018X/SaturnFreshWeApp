@@ -9,11 +9,11 @@
       <text class="address-title"></text>
       <view class="check-sex-wrap">
         <view style="margin-right: 60rpx" bindtap="checkSexGirl">
-          <checkbox class="round" checked="{{checkSexGirlStatus ? true : false}}"></checkbox>
+          <checkbox class="round1" checked="{{checkSexGirlStatus ? true : false}}"></checkbox>
           <text class="margin-left-sm text-sm">女士</text>
         </view>
         <view bindtap="checkSexBoy">
-          <checkbox class="round" checked="{{checkSexBoyStatus ? true : false}}"></checkbox>
+          <checkbox class="round1" checked="{{checkSexBoyStatus ? true : false}}"></checkbox>
           <text class="margin-left-sm text-sm">先生</text>
         </view>
       </view>

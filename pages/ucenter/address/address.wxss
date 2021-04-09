@@ -51,9 +51,9 @@
   width: 200rpx;
   height: 68rpx;
   line-height: 68rpx;
-  background: #3AB44B;
+  background: #ffe65c;
   border-radius: 8rpx;
-  color: #FFFFFF;
+  color: black;
   font-size: 30rpx;
   font-weight: 400;
   margin: 0 auto;
