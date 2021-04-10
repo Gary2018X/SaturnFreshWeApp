@@ -63,7 +63,27 @@ function request(url, data = {}, method = "GET") {
       },
       fail: function(err) {
         reject(err)
+        wx.hideLoading({
+          success: (res) => {},
+        })//关闭加载框
+        // wx.showToast({
+        //   title:"网络异常",
+        //   icon: 'error',
+        //   duration:2000
+        // })
+        wx.showModal({
+          title: '提示',
+          content: '网络或系统异常，请重试！',
+          success (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
       }
+
     })
   });
 }
