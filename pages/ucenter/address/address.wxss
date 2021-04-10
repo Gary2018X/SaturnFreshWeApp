@@ -13,7 +13,7 @@
   height: 80rpx;
   line-height: 80rpx;
   text-align: center;
-  background: #3AB44B;
+  background: #ffe65c;
   border-radius: 40rpx;
   font-size: 30rpx;
   font-weight: 400;
@@ -38,7 +38,7 @@
   background: #348DFF;
 }
 .default-tag{
-  background: #36B546;
+  background: #ffe65c;
 }
 
 
