@@ -4,7 +4,10 @@
   <view class="bg-white radius-card">
     <view>
       <!-- <button class="wx-login" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信用户一键登录</button> -->
-      <button class="wx-login"  open-type="getUserInfo" bindgetuserinfo="login">微信用户一键登录</button>
+       <!-- <button class="wx-login"  open-type="getUserProfile" bindgetuserinfo="login">微信用户一键登录</button> -->
+      <button class="wx-login" wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 微信用户一键登录 </button>
+      <button class="wx-login" wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信用户一键登录_ </button>
+     
     </view>
     <view class="margin-top-xl">
       <view class="phone-login" bindtap="accountLogin">手机号验证码注册/登录</view>
