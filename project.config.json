@@ -37,7 +37,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.10.3",
+  "libVersion": "2.16.0",
   "appid": "wxd9c4c398e7f4d19c",
   "projectname": "Saturn",
   "simulatorType": "wechat",
