@@ -73,7 +73,7 @@ function request(url, data = {}, method = "GET") {
         // })
         wx.showModal({
           title: '提示',
-          content: '网络或系统异常，请重试！',
+          content: '网络或系统异常，请重试！'+url,
           success (res) {
             if (res.confirm) {
               console.log('用户点击确定')

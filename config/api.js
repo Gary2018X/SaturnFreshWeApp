@@ -2,11 +2,11 @@
 // 本机开发时使用真机调试
 // var WxApiRoot = 'http://39.102.36.135:8080/wx/';
 // 局域网测试使用
-var WxApiRoot = 'http://localhost:8000/wx/';
+// var WxApiRoot = 'http://localhost:8000/wx/';
 // 云平台部署时使用
 // var WxApiRoot = 'http://wx-api.freemanzhao.top/';
 // 云平台上线时使用
-// var WxApiRoot = 'https://wx-api.niuniufresh.com/';
+var WxApiRoot = 'https://sf.gary666.com/wx/';
 
 // 小程序后台账号
 // niuniutec@163.com   niuniu@2020 wxa4980b09f0a1cb2e
