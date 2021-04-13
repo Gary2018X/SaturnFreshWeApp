@@ -98,8 +98,8 @@ Page({
       // console.log(res.data.cartList);
       res.data.cartList.map(item => {
         // 处理价格补0
-        console.log(item)
-        console.log(api.CartList)
+        // console.log(item)
+        // console.log(api.CartList)
         item.price = priceSupplement(item.price)
         item.marketPrice = priceSupplement(item.marketPrice)
         if(item.flashPrice) {

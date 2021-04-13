@@ -263,7 +263,7 @@ Page({
 
   // 减少数量
   cutNumber(event) {
-    let itemIndex = event.target.dataset.itemIndex;
+    let itemIndex = event.currentTarget.dataset.itemIndex;
     let goodsInfo = this.data.goodsList[itemIndex];
     let setNum = 'goodsList[' + itemIndex + '].number';
     let goodsIds = [];
@@ -327,8 +327,11 @@ Page({
   // 添加数量
   addNumber(event) {
     // debugger
-    let itemIndex = event.target.dataset.itemIndex;
+    // console.log(event)
+    let itemIndex = event.currentTarget.dataset.itemIndex;
+    // console.log(itemIndex)
     let goodsInfo = this.data.goodsList[itemIndex];
+    // console.log(goodsInfo)
     let goodsId = goodsInfo.id;
 
     util.addToCart(goodsId, 'needUpdateTabBar', false).then(res => {
