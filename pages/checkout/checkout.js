@@ -1,4 +1,4 @@
-import {round} from "../../utils/arithmetic";
+import { round } from "../../utils/arithmetic";
 
 var util = require('../../utils/util.js');
 var api = require('../../config/api.js');
@@ -49,7 +49,7 @@ Page({
     deliveryTimeDetail: ''
   },
 
-  onShow: function() {
+  onShow: function () {
     this.setData({
       swiperImgPrefix: app.globalData.swiperImgPrefix,
       plainImgPrefix: app.globalData.plainImgPrefix,
@@ -148,14 +148,14 @@ Page({
   },
 
   // 更改配送时间
-  bindPickerChange: function(e) {
+  bindPickerChange: function (e) {
     this.setData({
       pickerIndex: e.detail.value
     })
   },
 
   // 可以配送的时间段
-  deliveryTime: function() {
+  deliveryTime: function () {
     let arr = [];
     for (let i = 9; i < 18; i++) {
       if (i === 9) {
@@ -170,35 +170,35 @@ Page({
   },
 
   // 更改地址
-  selectAddress: function() {
+  selectAddress: function () {
     wx.navigateTo({
       url: '/pages/ucenter/address/address?page=chekout',
     })
   },
 
   // 优惠券
-  selectCoupon: function() {
+  selectCoupon: function () {
     wx.navigateTo({
       url: '/pages/ucenter/couponSelect/couponSelect',
     })
   },
 
   // 查看商品列表
-  goodsList: function() {
+  goodsList: function () {
     wx.navigateTo({
       url: '/pages/checkoutGoods/checkoutGoods',
     })
   },
 
   // 留言
-  bindMessageInput: function(event) {
+  bindMessageInput: function (event) {
     this.setData({
       message: event.detail.value
     });
   },
 
   // 去付款
-  submitOrder: debounce(function() {
+  submitOrder: debounce(function () {
     let that = this;
     // 判断有没有收货地址
     if (this.data.addressId <= 0) {
@@ -207,16 +207,17 @@ Page({
     }
     //
     // // 判断有没有打开余额支付
-    // if (!this.data.isAccountPay) {
-    //   util.showErrorToast('请选择余额支付');
-    //   return false;
-    // }
+    if (!this.data.isAccountPay) {
+      util.showErrorToast('请选择余额支付');
+      return false;
+    }
     //
     // // 判断余额够不够支付
-    // if (this.data.accountPracticalPrice >= this.data.balancePrice) {
-    //   util.showErrorToast('余额不足');
-    //   return false;
-    // }
+    console.log(this.data.accountPracticalPrice, this.data.balancePrice)
+    if (parseFloat(this.data.accountPracticalPrice) >= parseFloat(this.data.balancePrice)) {
+      util.showErrorToast('余额不足');
+      return false;
+    }
 
     // 清除购物车的 globalData
     app.globalData.cartList = [];
@@ -234,79 +235,87 @@ Page({
         // 下单成功，重置couponId
         try {
           wx.setStorageSync('couponId', 0);
-        } catch (error) {}
+        } catch (error) { }
 
         const orderId = res.data.orderId;
-
         // 余额支付
-        // util.request(api.OrderBalancePay, {
-        //   orderId: orderId,
-        // }, 'POST').then(res => {
-        //   if (res.errno === 0) {
-        //     // 清除购物车的 globalData
-        //     app.globalData.cartList = [];
-        //     wx.redirectTo({
-        //       url: '/pages/payResult/payResult?status=1&orderId=' + orderId + '&deliveryTime=' + this.data.deliveryTime[this.data.pickerIndex]
-        //     });
-        //   }
-        // });
-
-        util.tabBarCartNum(-this.data.goodsNum)
-
-        util.request(api.OrderPrepay, {
-          orderId: orderId
-        }, 'POST').then(res => {
-          if (res.errno === 0) {
-            const payParam = res.data;
-            console.log("支付过程开始");
-            wx.requestPayment({
-              'timeStamp': payParam.timeStamp,
-              'nonceStr': payParam.nonceStr,
-              'package': payParam.packageValue,
-              'signType': payParam.signType,
-              'paySign': payParam.paySign,
-              'success': function(res) {
-                console.log("支付过程成功");
-                let option ={
-                  orderId: orderId,
-                  status: '1',
-                  deliveryTime: that.data.deliveryTimeDetail
-                }
-                wx.setStorageSync('payOption', option);
-                wx.redirectTo({
-                  url: '/pages/payResult/payResult'
-                });
-              },
-              'fail': function(res) {
-                console.log("支付过程失败");
-                let option ={
-                  orderId: orderId,
-                  status: '0',
-                  deliveryTime: that.data.deliveryTimeDetail
-                }
-                wx.setStorageSync('payOption', option);
-                wx.redirectTo({
-                  url: '/pages/payResult/payResult'
-                });
-              },
-              'complete': function(res) {
-                console.log("支付过程结束")
+        if (this.data.isAccountPay) {
+          util.request(api.OrderBalancePay, {
+            orderId: orderId,
+          }, 'POST').then(res => {
+            if (res.errno === 0) {
+              // 清除购物车的 globalData
+              app.globalData.cartList = [];
+              let option = {
+                orderId: orderId,
+                status: '1',
+                deliveryTime: that.data.deliveryTimeDetail
               }
-            });
-          } else {
-            let option ={
-              orderId: orderId,
-              status: '0'
+              wx.setStorageSync('payOption', option);
+              wx.redirectTo({
+                url: '/pages/payResult/payResult?status=1&orderId=' + orderId + '&deliveryTime=' + this.data.deliveryTime[this.data.pickerIndex]
+              });
             }
-            wx.setStorageSync('payOption', option);
-            wx.redirectTo({
-              url: '/pages/payResult/payResult',
-              deliveryTime: that.data.deliveryTimeDetail
-            });
-          }
+          });
           util.tabBarCartNum(-this.data.goodsNum)
-        });
-      } else {
+        }
+        else if (this.data.isWeixinPay) {
+          util.request(api.OrderPrepay, {
+            orderId: orderId
+          }, 'POST').then(res => {
+            if (res.errno === 0) {
+              const payParam = res.data;
+              console.log("支付过程开始");
+              wx.requestPayment({
+                'timeStamp': payParam.timeStamp,
+                'nonceStr': payParam.nonceStr,
+                'package': payParam.packageValue,
+                'signType': payParam.signType,
+                'paySign': payParam.paySign,
+                'success': function (res) {
+                  console.log("支付过程成功");
+                  let option = {
+                    orderId: orderId,
+                    status: '1',
+                    deliveryTime: that.data.deliveryTimeDetail
+                  }
+                  wx.setStorageSync('payOption', option);
+                  wx.redirectTo({
+                    url: '/pages/payResult/payResult'
+                  });
+                },
+                'fail': function (res) {
+                  console.log("支付过程失败");
+                  let option = {
+                    orderId: orderId,
+                    status: '0',
+                    deliveryTime: that.data.deliveryTimeDetail
+                  }
+                  wx.setStorageSync('payOption', option);
+                  wx.redirectTo({
+                    url: '/pages/payResult/payResult'
+                  });
+                },
+                'complete': function (res) {
+                  console.log("支付过程结束")
+                }
+              });
+            } else {
+              let option = {
+                orderId: orderId,
+                status: '0'
+              }
+              wx.setStorageSync('payOption', option);
+              wx.redirectTo({
+                url: '/pages/payResult/payResult',
+                deliveryTime: that.data.deliveryTimeDetail
+              });
+            }
+            util.tabBarCartNum(-this.data.goodsNum)
+          });
+        }
+      }
+      else {
         util.showErrorToast(res.errmsg);
       }
       //  else {
@@ -315,7 +324,7 @@ Page({
       //   });
       // }
     });
-  },400),
+  }, 400),
 
   // 账户支付 change
   switchChange(e) {
@@ -370,7 +379,7 @@ Page({
   },
 
   // 密码
-  bindPasswordInput: function(event) {
+  bindPasswordInput: function (event) {
     this.setData({
       password: event.detail.value
     });
