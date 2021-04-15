@@ -60,7 +60,7 @@ Page({
 
     if (!(/^\d{6}$/.test(this.data.password))) {
       wx.showToast({
-        title: '支付密码格式不对',
+        title: '请输入六位数字密码',
         duration: 2000,
         icon: 'none'
       });
