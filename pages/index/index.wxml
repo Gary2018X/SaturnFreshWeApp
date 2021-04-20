@@ -261,7 +261,7 @@
         <view class="padding-lr-sm goodsList">
           <view class="bg-white goods-list-item">
             <view bindtap="goClassify" class="shop-big-img" data-id="{{shopListPicData.id}}" wx:if="{{cateGoryActive !== 0}}">
-              <image src="{{swiperImgPrefix + shopListPicData.picUrl}}" class="classifyImg"></image>
+              <!-- <image src="{{swiperImgPrefix + shopListPicData.picUrl}}" class="classifyImg"></image> -->
             </view>
             <view class="padding-wrap" wx:if="{{cateGoryActive !== 0}}"></view>
             <view class="shop-list">

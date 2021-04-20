@@ -357,7 +357,36 @@ Page({
             isWeixinPay: false
           })
         }
-      } else {
+      }
+      else if( res.errno === 40012){
+        wx.showModal({
+          title: '请先在设置-支付密码设置支付密码',
+          content: '是否前往设置支付密码页面？',
+          showCancel: true,//是否显示取消按钮
+          cancelText:"否",//默认是“取消”
+          cancelColor:'skyblue',//取消文字的颜色
+          confirmText:"是",//默认是“确定”
+          confirmColor: 'skyblue',//确定文字的颜色
+          success: function (res) {
+             if (res.cancel) {
+                //点击取消,默认隐藏弹框
+             } else {
+                //点击确定
+                wx.navigateTo({
+                  url: '../ucenter/payPassword/payPassword' 
+                });
+             }
+          },
+         
+       })
+ 
+       /* wx.showToast({
+          title: res.errmsg,
+          icon: 'none',
+          duration: 2000
+        });*/
+      }
+      else{
         wx.showToast({
           title: res.errmsg,
           icon: 'none',
