@@ -71,24 +71,49 @@ Page({
       success(res) {
         util.request(api.getSessionKeyByCode, {
           code: res.code,
-          user_info:that.data.userInfo
+          user_info: that.data.userInfo
         }, 'POST').then(res => {
-          if (res.code === 200) {
+          if (res.errno === 200 || res.errno === 40012) {
             wx.setStorageSync('openId', res.data.openid);
             that.setData({
               sessionKey: res.data.session_key
             })
-            wx.setStorageSync('userInfo',that.data.userInfo);
+            wx.setStorageSync('userInfo', that.data.userInfo);
             console.log(that.data.userInfo)
             wx.setStorageSync('token', res.data.session_key);
             app.globalData.hasLogin = true;
             app.globalData.tabBarCartNum = res.data.cartGoodsCount;
-            successToast("登录成功");
-            setTimeout(() => {
-              wx.switchTab({
-                url: '/pages/ucenter/index/index'
-              });
-            }, 600)
+            // successToast("登录成功");
+            if (res.errno === 40012) {
+              wx.showModal({
+                title: '您尚未设置支付密码',
+                content: '是否前往设置支付密码页面？',
+                showCancel: true,//是否显示取消按钮
+                cancelText: "否",//默认是“取消”
+                cancelColor: 'skyblue',//取消文字的颜色
+                confirmText: "是",//默认是“确定”
+                confirmColor: 'skyblue',//确定文字的颜色
+                success: function (res) {
+                  if (res.cancel) {
+                    setTimeout(() => {
+                      wx.switchTab({
+                        url: '/pages/ucenter/index/index'
+                      });
+                    }, 600)
+                    //点击取消,默认隐藏弹框
+                  } else {
+                    //点击确定
+                    wx.navigateTo({
+                      url: '../../ucenter/payPassword/payPassword'
+                    });
+                  }
+                },
+
+              })
+
+            }
+
+
           }
         })
       }
