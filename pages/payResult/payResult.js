@@ -11,6 +11,7 @@ Page({
     time:0,
     deliveryTime:'',
     isShow: false,
+    widwidth:wx.getSystemInfoSync().windowWidth,
   },
 
   onShow: function() {
