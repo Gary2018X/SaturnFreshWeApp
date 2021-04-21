@@ -73,7 +73,7 @@ Page({
           code: res.code,
           user_info: that.data.userInfo
         }, 'POST').then(res => {
-          if (res.errno === 200 || res.errno === 40012) {
+          if (res.errno === 0 || res.errno === 40012) {
             wx.setStorageSync('openId', res.data.openid);
             that.setData({
               sessionKey: res.data.session_key
@@ -108,12 +108,15 @@ Page({
                     });
                   }
                 },
-
               })
-
             }
-
-
+            else if (res.errno === 0) {
+              setTimeout(() => {
+                wx.switchTab({
+                  url: '/pages/ucenter/index/index'
+                });
+              }, 600)
+            }
           }
         })
       }
