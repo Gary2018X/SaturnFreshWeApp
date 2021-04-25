@@ -37,12 +37,12 @@ Page({
     showLoading();
     util.request(api.serviceOrderList).then(res => {
       console.log(res);
-      res.data.map(item => {
+      res.data.list.map(item => {
         // 价格补0
         item.actualPrice = priceSupplement(item.actualPrice)
       })
       this.setData({
-        listData: res.data,
+        listData: res.data.list,
         listTotal: res.data.total
       });
       wx.hideLoading();
@@ -54,13 +54,13 @@ Page({
     showLoading();
     util.request(api.serviceAllOrderList).then(res => {
       console.log(res);
-      res.data.map(item => {
+      res.data.list.map(item => {
         item.aftersales.createTime = util.formatTime(new Date(item.aftersales.createTime))
         // 价格补0
         item.orderGoods.price = priceSupplement(item.orderGoods.price)
       });
       this.setData({
-        serviceListData: res.data,
+        serviceListData: res.data.list,
         listTotal: res.data.total
       });
       wx.hideLoading();
