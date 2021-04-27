@@ -14,10 +14,22 @@ Page({
 
     deliveryInfo: {}, // 配送员信息
 
-    markers: [{
+    markers: [
+      //骑手位置
+      {
+      id:0,
       latitude: '',
       longitude: '',
       iconPath: '/static/images/map_marker_qs.png',
+      width: 30,
+      height: 36
+    },
+    //用户位置
+    {
+      id:1,
+      latitude: '',
+      longitude: '',
+      iconPath: '/static/images/map_marker_me.png',
       width: 30,
       height: 36
     }],
@@ -30,7 +42,10 @@ Page({
       latitudeDeliver: option.lat,
       'markers[0].latitude': option.lat,
       'markers[0].longitude': option.lng,
+      'markers[1].latitude': parseFloat(option.addressLat).toFixed(6),
+      'markers[1].longitude': parseFloat(option.addressLng).toFixed(6),
     });
+    // console.log(this.data)
     this.getDeliveryInfo(option);
   },
 
