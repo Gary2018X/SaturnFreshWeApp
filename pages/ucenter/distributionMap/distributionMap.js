@@ -17,7 +17,7 @@ Page({
     markers: [{
       latitude: '',
       longitude: '',
-      iconPath: 'https://images.niuniufresh.com/kkd8jq174ya574i4ixu9.png',
+      iconPath: '/static/images/map_marker.png',
       width: 30,
       height: 36
     }],
