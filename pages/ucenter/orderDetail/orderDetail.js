@@ -211,7 +211,7 @@ Page({
       success: function(res) {
         if (res.confirm) {
           util.request(api.OrderCancel, {
-            orderId: orderInfo.id
+            orderId: orderInfo.orderSn
           }, 'POST').then(function(res) {
             if (res.errno === 0) {
               wx.showToast({
@@ -238,7 +238,7 @@ Page({
       success: function(res) {
         if (res.confirm) {
           util.request(api.OrderRefund, {
-            orderId: orderInfo.id
+            orderId: orderInfo.orderSn
           }, 'POST').then(function(res) {
             if (res.errno === 0) {
               wx.showToast({
@@ -265,7 +265,7 @@ Page({
       success: function(res) {
         if (res.confirm) {
           util.request(api.OrderDelete, {
-            orderId: orderInfo.id
+            orderId: orderInfo.orderSn
           }, 'POST').then(function(res) {
             if (res.errno === 0) {
               wx.showToast({
@@ -285,14 +285,14 @@ Page({
   confirmOrder: function() {
     let that = this;
     let orderInfo = that.data.orderInfo;
-
+    // console.log(orderInfo)
     wx.showModal({
       title: '',
       content: '确认收货？',
       success: function(res) {
         if (res.confirm) {
           util.request(api.OrderConfirm, {
-            orderId: orderInfo.id
+            orderId: orderInfo.orderSn
           }, 'POST').then(function(res) {
             if (res.errno === 0) {
               wx.showToast({
@@ -311,11 +311,9 @@ Page({
   // “再来一单”按钮点击效果
   onceOrder: function(e) {
     let orderid = e.currentTarget.dataset.orderid;
-    let userid = wx.getStorageSync('token');
 
     util.request(api.OrderOnce, {
       orderId: orderid,
-      userId: userid
     }).then(res => {
       if (res.errno === 0) {
         wx.switchTab({
