@@ -195,7 +195,7 @@
       </view>
       <view style="height: 400rpx" class="bg-white margin-lr-sm margin-bottom-sm" id="hotGoods">
       <scroll-view scroll-x scroll-with-animation class="scroll-view">
-        <view wx:for="{{hotGoods.list}}" wx:key="hotGoods" class="hot-sale-item padding item">
+        <view wx:for="{{shopListData}}" wx:key="hotGoods" class="hot-sale-item padding item">
           <navigator url="../goods/goods?id={{item.id}}" hover-class="none">
             <image src="{{swiperImgPrefix + item.picUrl}}" mode="widthFix"></image>
             <view class="margin-tb-sm name">{{item.name}}</view>
@@ -265,7 +265,7 @@
             </view>
             <view class="padding-wrap" wx:if="{{cateGoryActive !== 0}}"></view>
             <view class="shop-list">
-              <view wx:for="{{shopListData}}" wx:for-index="index" wx:for-item="item" wx:key="index" class="shop-list-item item">
+              <view wx:for="{{RecommendListData}}" wx:for-index="index" wx:for-item="item" wx:key="index" class="shop-list-item item">
                 <navigator url="../goods/goods?id={{item.id}}" hover-class="none">
                   <view class="img">
                     <image src="{{swiperImgPrefix + item.picUrl}}" mode="widthFix"></image>

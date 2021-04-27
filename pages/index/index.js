@@ -36,6 +36,7 @@ Page({
     totalPages: 1, // 接口返回的总页数
     page: 1,
     shopListData: [], // 新品上市及分类的商品数据
+    RecommendListData: [], // 猜你喜欢
     shopListPicData: {}, // 商品列表分类带的大图数据
     noData: false, // 商品数据是否加载结束
     topNum: 0, // 主滚动距离
@@ -205,9 +206,61 @@ Page({
     }
 
     this.fetchNewShopList();
+    this.getRecommendList();//获取推荐商品
 
   },
+  getRecommendList(){
+    let that = this;
+    let params = {
+      page: this.data.page,
+      limit: 6
+    };
 
+    if(this.data.page > this.data.totalPages) {
+      this.setData({
+        noData: true
+      });
+      return
+    }
+    showLoading();
+    util.request(api.Recommend, params).then(res => {
+      let _list = [];
+      res.data.list.map(item => {
+        item.displayFlag = true;
+        item.animationX = 0;
+        item.animationY = 0;
+        item.number = 0;
+        // 处理价格补0
+        item.retailPrice = priceSupplement(item.retailPrice)
+        item.marketPrice = priceSupplement(item.marketPrice)
+        _list.push(item)
+      });
+      // debugger
+      let listData = [...this.data.RecommendListData, ..._list];
+      this.setData({
+        RecommendListData: listData,
+        page: this.data.page += 1,
+        totalPages: res.data.pages
+      });
+
+      wx.hideLoading();
+      if(that.data.clickSelectClassify) {
+        wx.nextTick(() => {
+          let newTop = app.globalData.fixedTop;
+          that.setData({
+            topNum: newTop,
+            clickSelectClassify: false
+          });
+          wx.pageScrollTo({
+            scrollTop: newTop,
+            duration: 0
+          })
+        })
+      }
+
+    });
+  }
+  ,
   onShareAppMessage: function() {
     return {
       title: '土星生鲜',
