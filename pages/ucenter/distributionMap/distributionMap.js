@@ -17,7 +17,7 @@ Page({
     markers: [{
       latitude: '',
       longitude: '',
-      iconPath: '/static/images/map_marker.png',
+      iconPath: '/static/images/map_marker_qs.png',
       width: 30,
       height: 36
     }],
