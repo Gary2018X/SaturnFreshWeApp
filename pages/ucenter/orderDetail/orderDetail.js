@@ -16,9 +16,10 @@ Page({
     setInterval: null,
 
     markers: [{
+      id:1,
       latitude: '',
       longitude: '',
-      iconPath: 'https://images.niuniufresh.com/kkd8jq174ya574i4ixu9.png',
+      iconPath: '/static/images/map_marker.png',
       width: 30,
       height: 36
     }],
@@ -338,7 +339,6 @@ Page({
     let userid = wx.getStorageSync('token');
     util.request(api.OrderCoordinate, {
       deliveryId : deliveryId,
-      userId: userid
     }).then(res => {
       if (res.errno === 0) {
         this.setData({
