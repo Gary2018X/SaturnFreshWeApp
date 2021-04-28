@@ -10,7 +10,84 @@ Page({
     orderId: 0,
     goodsList: [],
     itemIndex: 0,
+    flag:[0, 0, 0,],
+    stardata: [1, 2, 3, 4, 5],
+    starclass:[ {
+      index:0,
+      name: "口感评分",
+    },{
+      index:1,
+      name: "颜值评分",
+    }, ],
   },
+  changeColor: function (e) {
+ 
+                var index = e.currentTarget.dataset.index;
+                console.log(index)
+                var num = e.currentTarget.dataset.no;
+     
+                var a = 'flag[' + index + ']';
+     
+  
+     
+                var that = this;
+     
+                if(num == 1) {
+     
+                    that.setData({
+     
+                        [a]: 1,
+     
+   
+     
+                    });
+     
+                } else if (num == 2){
+     
+                    that.setData({
+     
+                        [a]: 2,
+     
+  
+     
+                    });
+     
+                } else if (num == 3) {
+     
+                    that.setData({
+     
+                        [a]: 3,
+     
+   
+     
+                    });
+     
+                } else if (num == 4) {
+     
+                    that.setData({
+     
+                        [a]: 4,
+     
+   
+     
+                    });
+     
+                } else if (num == 5) {
+     
+                    that.setData({
+     
+                        [a]: 5,
+     
+    
+     
+                    });
+     
+               }
+     
+        },
+     
+    
+   
 
   onLoad: function(options) {
     console.log(options.orderid)

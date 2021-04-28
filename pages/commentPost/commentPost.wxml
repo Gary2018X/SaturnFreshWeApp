@@ -8,16 +8,23 @@
       <view class="goodsName">
         {{item.goodsName}}
       </view>
-      <view class="flex star">
+      <!-- <view class="flex star">
         <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/zan{{item.star === '1'?'-on':''}}.png" data-num="1" data-item-index="{{index}}" bindtap="selectRater"></image>
         <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/diss{{item.star === '0'?'-on':''}}.png" data-num="0" data-item-index="{{index}}" bindtap="selectRater"></image>
-      </view>
+      </view> -->
+
+<view class="flex star">
+    <image class='stars' bindtap="changeColor" data-index='0' data-no="{{item}}" wx:for="{{stardata}}"
+ src="{{flag[0]>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
+ 
+</view>
+
     </view>
 
     <!-- 评论框 -->
-    <view class="padding-sm radius-card solid">
-      <textarea focus="true" bindblur="bindInputValue" bindinput="bindInputValue" data-item-index="{{index}}" maxlength="140" placeholder="留言经过筛选后，对所有人可见" />
-      <view class="text-right text-grey">{{140 - item.content.length}}</view>
+    <view class="padding-sm radius-card solid" >
+      <textarea style="height:100px" focus="true" bindblur="bindInputValue" bindinput="bindInputValue" data-item-index="{{index}}" maxlength="70" placeholder="留言经过筛选后，对所有人可见" />
+      <view class="text-right text-grey">{{70 - item.content.length}}</view>
     </view>
 
     <!-- 图片上传 -->
@@ -38,6 +45,14 @@
     </view>
   </view>
 </view>
+<view  w:for="{{starclass}}" w:key = "id" > 
+  <view >{{item.name}}</view>
+
+</view>
+
+
+
+
 
 <view class="bg-white btns" wx:if="{{goodsList.length > 0}}">
   <view class="btn bg-green light" bindtap="onClose">取消</view>
