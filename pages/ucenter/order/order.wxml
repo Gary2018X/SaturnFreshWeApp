@@ -30,7 +30,7 @@
     <view class="text-green">{{item.orderStatusText}}</view>
   </view>
 
-  <navigator url="../orderDetail/orderDetail?id={{item.id}}" hover-class="none" open-type="redirect">
+  <navigator url="../orderDetail/orderDetail?id={{item.id}}" hover-class="none" open-type="navigate">
     <scroll-view scroll-x class="bg-white padding-tb-sm scroll-view" scroll-with-animation>
       <view wx:for="{{item.goodsList}}" wx:key="id" wx:for-item="gitem" class="avatar lg margin-right-sm radius">
         <image src="{{swiperImgPrefix + gitem.picUrl}}"></image>
@@ -45,9 +45,9 @@
 
   <view class="padding-tb-sm text-right">
     <view class="btn line-grey margin-left-xs" bindtap="cancelOrder" wx:if="{{item.handleOption.cancel}}" data-orderId="{{item.id}}">取消订单</view>
-    <view class="btn line-green margin-left-xs" bindtap="confirmOrder" wx:if="{{item.handleOption.confirm}}" data-orderId="{{item.id}}">确认收货</view>
+    <view class="btn bg-green radius margin-left-xs" bindtap="confirmOrder" style="color:white;" wx:if="{{item.handleOption.confirm}}" data-orderId="{{item.id}}">确认收货</view>
     <view class="btn line-grey margin-left-xs" bindtap="refundOrder" wx:if="{{item.handleOption.refund}}" data-orderId="{{item.id}}">申请退款</view>
-       <view class="btn line-green margin-left-xs" bindtap="evaluate" wx:if="{{item.handleOption.rebuy}}" data-orderId="{{item.id}}">评价</view>
+       <view class="btn bg-green radius margin-left-xs" bindtap="evaluate" style="color:white;" wx:if="{{item.handleOption.rebuy}}" data-orderId="{{item.id}}">评价</view>
     <view class="btn bg-green radius margin-left-xs" bindtap="onceOrder" data-orderId="{{item.id}}" data-goodsNum="{{item.goodsNum}}">再来一单</view>
     <view class="btn bg-green radius margin-left-xs radius" bindtap="payOrder" wx:if="{{item.handleOption.pay}}" data-orderId="{{item.id}}">去付款</view>
   </view>
