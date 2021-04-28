@@ -1,4 +1,4 @@
-import {navigateTo, priceSupplement} from "../../../utils/toolMethods";
+import { navigateTo, priceSupplement } from "../../../utils/toolMethods";
 
 var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
@@ -16,7 +16,7 @@ Page({
     setInterval: null,
 
     markers: [{
-      id:1,
+      id: 1,
       latitude: '',
       longitude: '',
       iconPath: '/static/images/map_marker_qs.png',
@@ -32,7 +32,7 @@ Page({
     showMoreBtn: true,
   },
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.setData({
       orderId: options.id,
       swiperImgPrefix: app.globalData.swiperImgPrefix,
@@ -42,12 +42,12 @@ Page({
   },
 
   // 获取订单详情
-  getOrderDetail: function() {
+  getOrderDetail: function () {
     wx.showLoading({
       title: '加载中',
     });
 
-    setTimeout(function() {
+    setTimeout(function () {
       wx.hideLoading()
     }, 2000);
 
@@ -83,7 +83,7 @@ Page({
         // res.data.orderLogs = res.data.orderLogs.reverse();
         let _statueData = [];
         res.data.orderLogs.map((item, index) => {
-          if(index < 3) {
+          if (index < 3) {
             _statueData.push(item)
           }
         });
@@ -108,7 +108,7 @@ Page({
         num += item.number;
       });
       this.setData({
-        goodsNum : num
+        goodsNum: num
       });
 
       wx.hideLoading();
@@ -116,7 +116,7 @@ Page({
   },
 
   // 时间格式化
-  formatDuring: function(mss) {
+  formatDuring: function (mss) {
     var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = parseInt((mss % (1000 * 60)) / 1000);
     minutes = minutes < 10 ? ('0' + minutes) : minutes;
@@ -125,13 +125,13 @@ Page({
   },
 
   // 倒计时
-  countDown: function(time) {
+  countDown: function (time) {
     let time_original = new Date(time).getTime();
-    let ios_time_original = new Date(time.replace(/-/g,'/')).getTime();
+    let ios_time_original = new Date(time.replace(/-/g, '/')).getTime();
     let time_new = new Date().getTime();
     let timestamp;
 
-    if(time_original) {
+    if (time_original) {
       timestamp = time_new - time_original
     } else {
       timestamp = time_new - ios_time_original
@@ -158,9 +158,9 @@ Page({
     });
     wx.setClipboardData({
       data: this.data.orderInfo.orderSn,
-      success: function(res) {
+      success: function (res) {
         wx.getClipboardData({
-          success: function(res) {
+          success: function (res) {
             console.log(res.data)
           }
         })
@@ -169,12 +169,12 @@ Page({
   },
 
   // “去付款”按钮点击效果
-  payOrder: function() {
+  payOrder: function () {
 
     let that = this;
     util.request(api.OrderPrepay, {
       orderId: that.data.orderId
-    }, 'POST').then(function(res) {
+    }, 'POST').then(function (res) {
       if (res.errno === 0) {
         const payParam = res.data;
         console.log("支付过程开始");
@@ -184,15 +184,15 @@ Page({
           'package': payParam.packageValue,
           'signType': payParam.signType,
           'paySign': payParam.paySign,
-          'success': function(res) {
+          'success': function (res) {
             console.log("支付过程成功");
             util.redirect('/pages/ucenter/order/order');
           },
-          'fail': function(res) {
+          'fail': function (res) {
             console.log("支付过程失败");
             util.showErrorToast('支付失败');
           },
-          'complete': function(res) {
+          'complete': function (res) {
             console.log("支付过程结束")
           }
         });
@@ -201,18 +201,18 @@ Page({
   },
 
   // “取消订单”点击效果
-  cancelOrder: function() {
+  cancelOrder: function () {
     let that = this;
     let orderInfo = that.data.orderInfo;
 
     wx.showModal({
       title: '',
       content: '确定要取消此订单？',
-      success: function(res) {
+      success: function (res) {
         if (res.confirm) {
           util.request(api.OrderCancel, {
             orderId: orderInfo.orderSn
-          }, 'POST').then(function(res) {
+          }, 'POST').then(function (res) {
             if (res.errno === 0) {
               wx.showToast({
                 title: '取消订单成功'
@@ -228,18 +228,18 @@ Page({
   },
 
   // “取消订单并退款”点击效果
-  refundOrder: function() {
+  refundOrder: function () {
     let that = this;
     let orderInfo = that.data.orderInfo;
 
     wx.showModal({
       title: '',
       content: '确定要取消此订单？',
-      success: function(res) {
+      success: function (res) {
         if (res.confirm) {
           util.request(api.OrderRefund, {
             orderId: orderInfo.orderSn
-          }, 'POST').then(function(res) {
+          }, 'POST').then(function (res) {
             if (res.errno === 0) {
               wx.showToast({
                 title: '取消订单成功'
@@ -255,18 +255,18 @@ Page({
   },
 
   // “删除”点击效果
-  deleteOrder: function() {
+  deleteOrder: function () {
     let that = this;
     let orderInfo = that.data.orderInfo;
 
     wx.showModal({
       title: '',
       content: '确定要删除此订单？',
-      success: function(res) {
+      success: function (res) {
         if (res.confirm) {
           util.request(api.OrderDelete, {
             orderId: orderInfo.orderSn
-          }, 'POST').then(function(res) {
+          }, 'POST').then(function (res) {
             if (res.errno === 0) {
               wx.showToast({
                 title: '删除订单成功'
@@ -282,18 +282,18 @@ Page({
   },
 
   // “确认收货”点击效果
-  confirmOrder: function() {
+  confirmOrder: function () {
     let that = this;
     let orderInfo = that.data.orderInfo;
     // console.log(orderInfo)
     wx.showModal({
       title: '',
       content: '确认收货？',
-      success: function(res) {
+      success: function (res) {
         if (res.confirm) {
           util.request(api.OrderConfirm, {
             orderId: orderInfo.orderSn
-          }, 'POST').then(function(res) {
+          }, 'POST').then(function (res) {
             if (res.errno === 0) {
               wx.showToast({
                 title: '确认收货成功！'
@@ -309,20 +309,29 @@ Page({
   },
 
   // “再来一单”按钮点击效果
-  onceOrder: function(e) {
+  onceOrder: function (e) {
+    var that = this;
     let orderid = e.currentTarget.dataset.orderid;
+    wx.showModal({
+      title: '',
+      content: '确认再来一单？',
+      success: function (res) {
+        if (res.confirm) {
+          util.request(api.OrderOnce, {
+            orderId: orderid,
+          }).then(res => {
+            if (res.errno === 0) {
+              wx.switchTab({
+                url: "/pages/cart/cart"
+              });
 
-    util.request(api.OrderOnce, {
-      orderId: orderid,
-    }).then(res => {
-      if (res.errno === 0) {
-        wx.switchTab({
-          url: "/pages/cart/cart"
-        });
-
-        util.tabBarCartNum(this.data.goodsNum)
+              util.tabBarCartNum(that.data.goodsNum)
+            }
+          });
+        }
       }
     });
+
   },
 
   // 评价
@@ -336,7 +345,7 @@ Page({
   getCoordinateData(deliveryId) {
     let userid = wx.getStorageSync('token');
     util.request(api.OrderCoordinate, {
-      deliveryId : deliveryId,
+      deliveryId: deliveryId,
     }).then(res => {
       if (res.errno === 0) {
         this.setData({
@@ -369,23 +378,23 @@ Page({
     })
   },
 
-  onReady: function() {
+  onReady: function () {
     // 页面渲染完成
   },
-  onShow: function() {
+  onShow: function () {
     // 页面显示
   },
-  onHide: function() {
+  onHide: function () {
     // 页面隐藏
   },
-  onUnload: function() {
+  onUnload: function () {
     // wx.reLaunch({
     //   url: '../order/order'
     // })
     // wx.navigateTo({
- 
+
     //   url: '../order/order',
-      
+
     //   })
 
     // 页面关闭
