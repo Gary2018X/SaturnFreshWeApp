@@ -50,7 +50,7 @@ Page({
     couponTimeSign: true,  // true 说明 满足 （不是同一天且第一次进入） false 说明 不满足 （不是同一天且第一次进入）
     couponModel: true, // 登录当天第一次进首页优惠券弹框
     couponData: [], // 首页弹框我的优惠券
-
+    limitnum:0,
     showTopBtn: false,
 
     newPeopleCouponData: [], // 新人优惠券数据
@@ -204,9 +204,10 @@ Page({
         index: 3,
       })
     }
-
+    
     this.fetchNewShopList();
     this.getRecommendList();//获取推荐商品
+   
 
   },
   getRecommendList(){
@@ -236,7 +237,10 @@ Page({
         _list.push(item)
       });
       // debugger
+      console.log(this.data.RecommendListData)
+      console.log(_list)
       let listData = [...this.data.RecommendListData, ..._list];
+      // let listData = this.data.RecommendListData.concat(_list)
       this.setData({
         RecommendListData: listData,
         page: this.data.page += 1,
@@ -259,8 +263,7 @@ Page({
       }
 
     });
-  }
-  ,
+  },
   onShareAppMessage: function() {
     return {
       title: '土星生鲜',
@@ -271,13 +274,18 @@ Page({
 
   onPullDownRefresh() {
     wx.showNavigationBarLoading(); //在标题栏中显示加载
-    this.getIndexData();
-    // this.getIndexSkillData();
+    
+    this.getIndexSkillData();
     // this.fetchDelicacyData();
     wx.hideNavigationBarLoading(); //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
   },
-
+  getRecommenddata:function(){
+    util.request(api.Recommend).then(res => {
+        
+    
+    })
+  },
   // 列表
   getIndexData: function() {
     util.request(api.IndexUrl).then(res => {
@@ -716,6 +724,7 @@ Page({
   },
 
   onReachBottom() {
+    this.getRecommendList()
     if(this.data.cateGoryActive === 0) {
       this.fetchNewShopList()
     } else {

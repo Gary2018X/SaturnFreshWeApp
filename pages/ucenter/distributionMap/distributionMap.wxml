@@ -17,7 +17,7 @@
     <text class="iconfont iconswticonkuaidi1"></text>
   </view>
   <view class="item-content">
-    <view>距您还有<text style="font-size: 36rpx; color: #3AB44B;font-weight: 600;padding: 0 4rpx;">{{distance}}</text>公里</view>
+    <view>距您还有<text style="font-size: 36rpx; color: #ffe65c;font-weight: 600;padding: 0 4rpx;">{{distance}}</text>公里</view>
     <view>配送员：{{deliveryInfo.userName}}</view>
     <view>联系电话：{{deliveryInfo.account}}</view>
   </view>

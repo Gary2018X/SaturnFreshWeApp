@@ -21,7 +21,7 @@ Page({
       latitude: '',
       longitude: '',
       iconPath: '/static/images/map_marker_qs.png',
-      width: 30,
+      width: 25,
       height: 36
     },
     //用户位置
@@ -30,7 +30,7 @@ Page({
       latitude: '',
       longitude: '',
       iconPath: '/static/images/map_marker_me.png',
-      width: 30,
+      width: 25,
       height: 36
     }],
   },

@@ -25,7 +25,7 @@ page{
   width: 80rpx;
   height: 80rpx;
   margin-right: 30rpx;
-  background: #3AB44B;
+  background: #ffe65c;
   border-radius: 50%;
   text-align: center;
   line-height: 80rpx;
@@ -36,7 +36,7 @@ page{
 }
 .icondianhua{
   font-size: 60rpx;
-  color: #3AB44B;
+  color: #ffe65c;
 }
 .item-content{
 flex: 1;
