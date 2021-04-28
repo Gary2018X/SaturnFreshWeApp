@@ -1,5 +1,5 @@
 var api = require('../config/api.js');
-var utilMd5 = require('../utils/md5.js');
+var utilMd5 = require('../utils/md5.js');  
 function formatTime(date, type) {
   // debugger;
   var year = date.getFullYear();
@@ -10,7 +10,7 @@ function formatTime(date, type) {
   var minute = date.getMinutes();
   var second = date.getSeconds();
 
-  if (type === 'yy-mm-dd') {
+  if(type === 'yy-mm-dd') {
     return [year, month, day].map(formatNumber).join('-');
   } else {
     return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
@@ -26,7 +26,7 @@ function formatNumber(n) {
  * 封微信的的request
  */
 function request(url, data = {}, method = "GET") {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     wx.request({
       url: url,
       data: data,
@@ -35,43 +35,24 @@ function request(url, data = {}, method = "GET") {
         'Content-Type': 'application/json',
         'X-Token': wx.getStorageSync('token'),
         'timestamp': Date.now(),
-        'sign': utilMd5.hexMD5('SaturnFresh' + String(Date.now())),
+        'sign': utilMd5.hexMD5('SaturnFresh'+String(Date.now())),
       },
-      success: function (res) {
+      success: function(res) {
 
         if (res.statusCode == 200) {
 
-          if (res.data.errno == 403) {
+          if (res.data.errno == 501) {
             // 清除登录相关内容
             try {
               wx.removeStorageSync('userInfo');
               wx.removeStorageSync('token');
             } catch (e) {
-              console.log('清除登录态失败')
               // Do something when catch error
             }
-            wx.showModal({
-              title: '提示',
-              content: res.data.errmsg,
-              showCancel:false,
-              success(res) {
-                if (res.confirm) {
-                  console.log('用户点击确定')
-                  // 切换到登录页面
-                  wx.navigateTo({
-                    url: '/pages/auth/login/login'
-                  });
-                } else if (res.cancel) {
-                  setTimeout(() =>{
-                    wx.switchTab({
-                      url: '/pages/ucenter/index/index'
-                    });
-                  }, 1000)
-                  console.log('用户点击取消')
-                }
-              }
-            })
-
+            // 切换到登录页面
+            wx.navigateTo({
+              url: '/pages/auth/login/login'
+            });
           } else {
             resolve(res.data);
           }
@@ -80,10 +61,10 @@ function request(url, data = {}, method = "GET") {
         }
 
       },
-      fail: function (err) {
+      fail: function(err) {
         reject(err)
         wx.hideLoading({
-          success: (res) => { },
+          success: (res) => {},
         })//关闭加载框
         // wx.showToast({
         //   title:"网络异常",
@@ -92,8 +73,8 @@ function request(url, data = {}, method = "GET") {
         // })
         wx.showModal({
           title: '提示',
-          content: '网络或系统异常，请重试！' + url,
-          success(res) {
+          content: '网络或系统异常，请重试！'+url,
+          success (res) {
             if (res.confirm) {
               console.log('用户点击确定')
             } else if (res.cancel) {
@@ -143,7 +124,7 @@ function tabBarCartNum(num) {
 
 //添加到购物车
 function addToCart(goodsId, type, skillShop) {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     request(api.CartAdd, {
       goodsId: goodsId,
       number: 1,
@@ -163,7 +144,7 @@ function addToCart(goodsId, type, skillShop) {
             }
           }
         });
-        if (type === 'needUpdateTabBar') tabBarCartNum(1);
+        if(type === 'needUpdateTabBar') tabBarCartNum(1);
         resolve()
       } else {
         wx.showToast({
