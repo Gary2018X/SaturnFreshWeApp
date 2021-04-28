@@ -10,86 +10,87 @@ Page({
     orderId: 0,
     goodsList: [],
     itemIndex: 0,
-    flag:[0, 0, 0,],
+    flag: [0, 0, 0],
     stardata: [1, 2, 3, 4, 5],
-    starclass:[ {
-      index:0,
+    starclass: [{
+      index: 0,
       name: "口感评分",
-    },{
-      index:1,
+    }, {
+      index: 1,
       name: "颜值评分",
     }, ],
   },
   changeColor: function (e) {
- 
-                var index = e.currentTarget.dataset.index;
-                console.log(index)
-                var num = e.currentTarget.dataset.no;
-     
-                var a = 'flag[' + index + ']';
-     
-  
-     
-                var that = this;
-     
-                if(num == 1) {
-     
-                    that.setData({
-     
-                        [a]: 1,
-     
-   
-     
-                    });
-     
-                } else if (num == 2){
-     
-                    that.setData({
-     
-                        [a]: 2,
-     
-  
-     
-                    });
-     
-                } else if (num == 3) {
-     
-                    that.setData({
-     
-                        [a]: 3,
-     
-   
-     
-                    });
-     
-                } else if (num == 4) {
-     
-                    that.setData({
-     
-                        [a]: 4,
-     
-   
-     
-                    });
-     
-                } else if (num == 5) {
-     
-                    that.setData({
-     
-                        [a]: 5,
-     
-    
-     
-                    });
-     
-               }
-     
-        },
-     
-    
-   
 
-  onLoad: function(options) {
+    var index = e.currentTarget.dataset.index;
+    console.log(index)
+    var num = e.currentTarget.dataset.no;
+
+    var a = 'flag[' + index + ']';
+    console.log(a)
+
+
+    var that = this;
+
+    if (num == 1) {
+
+      that.setData({
+
+        [a]: 1,
+
+
+
+      });
+
+    } else if (num == 2) {
+
+      that.setData({
+
+        [a]: 2,
+
+
+
+      });
+
+    } else if (num == 3) {
+
+      that.setData({
+
+        [a]: 3,
+
+
+
+      });
+
+    } else if (num == 4) {
+
+      that.setData({
+
+        [a]: 4,
+
+
+
+      });
+
+    } else if (num == 5) {
+
+      that.setData({
+
+        [a]: 5,
+
+
+
+      });
+
+    }
+
+  },
+
+  
+
+
+
+  onLoad: function (options) {
     console.log(options.orderid)
     this.setData({
       orderId: options.orderid,
@@ -99,7 +100,7 @@ Page({
   },
 
   // 获取订单详情
-  getOrderDetail: function() {
+  getOrderDetail: function () {
     wx.showLoading({
       title: '加载中',
     });
@@ -111,7 +112,7 @@ Page({
         let _goodsList = []
         res.data.orderGoods.forEach(item => {
 
-          if(item.comment == '0') {
+          if (item.comment == '0') {
             item.files = [];
             item.content = "";
             item.star = "1"
@@ -129,7 +130,7 @@ Page({
   },
 
   // 上传图片按钮
-  chooseImage: function(e) {
+  chooseImage: function (e) {
     this.setData({
       itemIndex: e.currentTarget.dataset.itemIndex
     });
@@ -151,7 +152,7 @@ Page({
   },
 
   // 上传
-  upload: function(res) {
+  upload: function (res) {
     const uploadTask = wx.uploadFile({
       url: api.StorageUpload,
       filePath: res.tempFilePaths[0],
@@ -160,7 +161,7 @@ Page({
         let _res = JSON.parse(res.data);
         if (_res.errno === 0) {}
       },
-      fail: function(e) {
+      fail: function (e) {
         wx.showModal({
           title: '错误',
           content: '上传失败',
@@ -171,7 +172,7 @@ Page({
   },
 
   // 评分
-  selectRater: function(e) {
+  selectRater: function (e) {
     this.setData({
       itemIndex: e.currentTarget.dataset.itemIndex
     });
@@ -183,7 +184,7 @@ Page({
   },
 
   // 评论
-  bindInputValue: function(e) {
+  bindInputValue: function (e) {
     let value = e.detail.value;
     this.setData({
       itemIndex: e.currentTarget.dataset.itemIndex
@@ -201,12 +202,12 @@ Page({
   },
 
   // 取消评论
-  onClose: function() {
+  onClose: function () {
     wx.navigateBack();
   },
 
   // 发表评论
-  onPost: function() {
+  onPost: function () {
     let arr = [];
     let num = 0;
 
@@ -236,12 +237,12 @@ Page({
 
     util.request(api.OrderEvaluate, {
       orderItemCommentList: arr
-    }, 'POST').then(function(res) {
+    }, 'POST').then(function (res) {
       // debugger
       if (res.errno === 0) {
         wx.showToast({
           title: '评论成功',
-          complete: function() {
+          complete: function () {
             wx.navigateBack();
           }
         })

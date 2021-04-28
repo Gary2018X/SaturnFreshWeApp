@@ -1,11 +1,14 @@
 .container {
-  padding-bottom: 120rpx;
+  padding-bottom: 0rpx;
 }
 
 .goodsName {
   width: calc(100% - 250rpx);
 }
-
+.flex4{
+  display: flex;
+  margin-top: 15rpx;
+}
 /* 评分 */
 
 .star image {

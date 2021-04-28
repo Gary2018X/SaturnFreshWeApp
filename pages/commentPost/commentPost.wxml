@@ -6,24 +6,26 @@
         <image src="{{item.picUrl}}"></image>
       </view>
       <view class="goodsName">
-        {{item.goodsName}}
+        {{item.name}}
       </view>
       <!-- <view class="flex star">
         <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/zan{{item.star === '1'?'-on':''}}.png" data-num="1" data-item-index="{{index}}" bindtap="selectRater"></image>
         <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/diss{{item.star === '0'?'-on':''}}.png" data-num="0" data-item-index="{{index}}" bindtap="selectRater"></image>
       </view> -->
 
-<view class="flex star">
-    <image class='stars' bindtap="changeColor" data-index='0' data-no="{{item}}" wx:for="{{stardata}}"
- src="{{flag[0]>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
- 
-</view>
+      <view class="flex star">
+            
+        <image class='stars' bindtap="changeColor" data-index='0' data-no="{{item}}" wx:for="{{stardata}}"
+          src="{{flag[0]>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
+
+      </view>
 
     </view>
 
     <!-- 评论框 -->
-    <view class="padding-sm radius-card solid" >
-      <textarea style="height:100px" focus="true" bindblur="bindInputValue" bindinput="bindInputValue" data-item-index="{{index}}" maxlength="70" placeholder="留言经过筛选后，对所有人可见" />
+    <view class="padding-sm radius-card solid">
+      <textarea style="height:100px" focus="true" bindblur="bindInputValue" bindinput="bindInputValue"
+        data-item-index="{{index}}" maxlength="70" placeholder="留言经过筛选后，对所有人可见" />
       <view class="text-right text-grey">{{70 - item.content.length}}</view>
     </view>
 
@@ -43,12 +45,30 @@
         </view>
       </view>
     </view>
+    
   </view>
-</view>
-<view  w:for="{{starclass}}" w:key = "id" > 
-  <view >{{item.name}}</view>
+  
+</view >
+<view class="bg-white radius-card margin-sm padding-sm">
 
+<view class="flex star">
+  <view>口感评分</view>
+    <image class='stars' bindtap="changeColor" data-index='1' data-no="{{item}}" wx:for="{{stardata}}"
+ src="{{flag[1]>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
+ 
 </view>
+
+
+ 
+  <view class="flex4 star">
+    <view>颜值评分</view>
+    <image class='stars' bindtap="changeColor" data-index='2' data-no="{{item}}" wx:for="{{stardata}}"
+ src="{{flag[2]>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
+ 
+</view>
+</view>
+
+
 
 
 
