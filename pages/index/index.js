@@ -255,10 +255,10 @@ Page({
             topNum: newTop,
             clickSelectClassify: false
           });
-          wx.pageScrollTo({
-            scrollTop: newTop,
-            duration: 0
-          })
+          // wx.pageScrollTo({
+          //   scrollTop: newTop,
+          //   duration: 0
+          // })
         })
       }
 
@@ -632,10 +632,10 @@ Page({
             topNum: newTop,
             clickSelectClassify: false
           });
-          wx.pageScrollTo({
-            scrollTop: newTop,
-            duration: 0
-          })
+          // wx.pageScrollTo({
+          //   scrollTop: newTop,
+          //   duration: 0
+          // })
         })
       }
 
@@ -684,10 +684,10 @@ Page({
             topNum: newTop,
             clickSelectClassify: false
           });
-          wx.pageScrollTo({
-            scrollTop: newTop,
-            duration: 0
-          })
+          // wx.pageScrollTo({
+          //   scrollTop: newTop,
+          //   duration: 0
+          // })
         })
       }
 
@@ -798,9 +798,9 @@ Page({
     this.setData({
       showTopBtn: false
     });
-    wx.pageScrollTo({
-      scrollTop: 0,
-    })
+    // wx.pageScrollTo({
+    //   scrollTop: 0,
+    // })
   },
   goAdLink(e){
     let link = e.currentTarget.dataset.link;

@@ -3,11 +3,11 @@
   <scroll-view
     class="scroll-shop-list"
     scroll-y
-    bindscroll="indexScrollHandle"
-    bindscrolltolower="indexScrollBottom"
-    scroll-top="{{topNum}}"
+    
     >
-
+<!-- bindscroll="indexScrollHandle"
+    bindscrolltolower="indexScrollBottom" 
+    scroll-top="{{topNum}}"-->
     <!-- 搜索banner部分 -->
     <view class="index-top-bg">
       <image class="top-bg-image" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/banner-bg.png"></image>
