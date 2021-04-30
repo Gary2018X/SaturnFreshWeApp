@@ -13,13 +13,10 @@
         <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/diss{{item.star === '0'?'-on':''}}.png" data-num="0" data-item-index="{{index}}" bindtap="selectRater"></image>
       </view> -->
 
-      <view class="flex star">
-            
-        <image class='stars' bindtap="changeColor" data-index='0' data-no="{{item}}" wx:for="{{stardata}}"
+      <view class="flex star">   
+        <image class='stars' bindtap="changeColor" data-index='0' data-no="{{item}}" wx:for="{{stardata}}" wx:key="id"
           src="{{flag[0]>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
-
       </view>
-
     </view>
 
     <!-- 评论框 -->
@@ -35,7 +32,7 @@
         <text class="margin-right-sm">最多能上传三张图片</text> {{item.files.length}} / 3
       </view>
       <view class="flex margin-top" id="uploaderFiles">
-        <block wx:for="{{item.files}}" wx:key="*this" wx:for-index="imgIndex" wx:for-item="imgItem">
+        <block wx:for="{{item.files}}" wx:key="*this" wx:for-index="imgIndex" wx:for-item="imgItem" wx:key="id">
           <view class="radius-card solid flex justify-center align-center imageBox">
             <image src="{{imgItem}}" mode="aspectFill" />
           </view>
@@ -45,15 +42,9 @@
         </view>
       </view>
     </view>
-    
-  </view>
-  
-</view >
-<view class="bg-white radius-card margin-sm padding-sm">
-
-<view class="flex star">
+    <view class="flex star">
   <view>口感评分</view>
-    <image class='stars' bindtap="changeColor" data-index='1' data-no="{{item}}" wx:for="{{stardata}}"
+    <image class='stars' bindtap="changeColor" data-index='1' data-no="{{item}}" wx:for="{{stardata}}" wx:key="id"
  src="{{flag[1]>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
  
 </view>
@@ -62,17 +53,17 @@
  
   <view class="flex4 star">
     <view>颜值评分</view>
-    <image class='stars' bindtap="changeColor" data-index='2' data-no="{{item}}" wx:for="{{stardata}}"
+    <image class='stars' bindtap="changeColor" data-index='2' data-no="{{item}}" wx:for="{{stardata}}" wx:key="id"
  src="{{flag[2]>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
  
 </view>
+  </view>
+  
+</view >
+<view class="bg-white radius-card margin-sm padding-sm">
+
+
 </view>
-
-
-
-
-
-
 
 <view class="bg-white btns" wx:if="{{goodsList.length > 0}}">
   <view class="btn bg-green light" bindtap="onClose">取消</view>

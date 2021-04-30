@@ -18,80 +18,50 @@ Page({
     }, {
       index: 1,
       name: "颜值评分",
-    }, ],
+    },],
   },
   changeColor: function (e) {
 
     var index = e.currentTarget.dataset.index;
-    console.log(index)
+    // console.log(index)
     var num = e.currentTarget.dataset.no;
 
     var a = 'flag[' + index + ']';
-    console.log(a)
-
+    // console.log(a)
 
     var that = this;
 
     if (num == 1) {
-
       that.setData({
-
         [a]: 1,
-
-
-
       });
-
     } else if (num == 2) {
 
       that.setData({
-
         [a]: 2,
-
-
-
       });
-
     } else if (num == 3) {
 
       that.setData({
-
         [a]: 3,
-
-
-
       });
-
     } else if (num == 4) {
 
       that.setData({
-
         [a]: 4,
-
-
-
       });
-
     } else if (num == 5) {
-
       that.setData({
-
         [a]: 5,
-
-
-
       });
-
     }
-
+    // console.log(that.data)
   },
-
-  
 
 
 
   onLoad: function (options) {
-    console.log(options.orderid)
+    // console.log(options.orderid)
     this.setData({
       orderId: options.orderid,
     });
@@ -159,7 +129,7 @@ Page({
       name: 'file',
       success: res => {
         let _res = JSON.parse(res.data);
-        if (_res.errno === 0) {}
+        if (_res.errno === 0) { }
       },
       fail: function (e) {
         wx.showModal({
@@ -171,7 +141,7 @@ Page({
     })
   },
 
-  // 评分
+  // 评分,弃用
   selectRater: function (e) {
     this.setData({
       itemIndex: e.currentTarget.dataset.itemIndex
@@ -210,13 +180,15 @@ Page({
   onPost: function () {
     let arr = [];
     let num = 0;
-
+    var that= this;
     this.data.goodsList.forEach(item => {
       arr.push({
         orderItemId: item.id,
         commentContent: item.content,
         commentImages: item.files.join(','),
-        commentResult: item.star,
+        commentStar: that.data.flag[0],//总评分
+        commentTStar: that.data.flag[1],//口感评分
+        commentaStar: that.data.flag[2],//颜值评分
         commentReason: "",
       });
 
@@ -234,7 +206,7 @@ Page({
       });
       return false
     }
-
+    console.log(arr)
     util.request(api.OrderEvaluate, {
       orderItemCommentList: arr
     }, 'POST').then(function (res) {
