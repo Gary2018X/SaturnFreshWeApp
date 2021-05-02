@@ -145,7 +145,7 @@ Page({
       id: this.data.id
     }).then(res => {
       if (res.errno === 0) {
-        console.log(app.globalData.cartList)
+        // console.log(app.globalData.cartList)
         if (res.data.list) {
           res.data.list.forEach(item => {
             // 处理价格补0

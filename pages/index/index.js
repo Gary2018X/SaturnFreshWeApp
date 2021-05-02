@@ -237,8 +237,8 @@ Page({
         _list.push(item)
       });
       // debugger
-      console.log(this.data.RecommendListData)
-      console.log(_list)
+      // console.log(this.data.RecommendListData)
+      // console.log(_list)
       let listData = [...this.data.RecommendListData, ..._list];
       // let listData = this.data.RecommendListData.concat(_list)
       this.setData({
