@@ -208,7 +208,8 @@ Page({
     }
     console.log(arr)
     util.request(api.OrderEvaluate, {
-      orderItemCommentList: arr
+      orderItemCommentList: arr,
+      orderId:that.data.orderId
     }, 'POST').then(function (res) {
       // debugger
       if (res.errno === 0) {
