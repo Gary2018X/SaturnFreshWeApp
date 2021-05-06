@@ -118,7 +118,22 @@
       <view class="text-grey text-sm problem-item-content">{{item.answer}}</view>
     </view>
   </view>
+    <!-- 评论 -->
+    <view class="bg-white padding-sm margin-top-sm common-problem">
+    <view class="margin-bottom text-lg detail-item-title">评论</view>
+    <view wx:for="{{comment}}" wx:key="id" class="margin-bottom common-problem-item">
+      <view class="margin-bottom-xs problem-item-title"><text class="problem-item-title-circle"></text>{{item.com_content}}</view>
+      <view class="text-grey text-sm problem-item-content">{{item.com_score}}</view>
+      <view class="text-grey text-sm problem-item-content">{{item.com_t_score}}</view>
+      <view class="text-grey text-sm problem-item-content">{{item.com_a_score}}</view>
+      <view class="text-grey text-sm problem-item-content">{{item.add_time}}</view>
+      <view class="text-grey text-sm problem-item-content">{{item.username}}</view>
+      <image class="goodsImg" src="{{item.avatar}}"></image>
+      <!-- <view class="text-grey text-sm problem-item-content">{{item.avatar}}</view> -->
+    </view>
+  </view>
 </view>
+
 
 <!-- 规格选择界面 -->
 <view class="attr-pop-box" hidden="{{!openAttr}}">
