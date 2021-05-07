@@ -470,3 +470,46 @@
   width: 100%;
   padding-left: 10rpx;
 }
+
+/* 评论相关样式 */
+.comment-item {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  background: #f8f8f8;
+  padding: 30rpx ;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-left: 20rpx solid #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.comment-item:last-child {
+  margin-right: 20rpx;
+}
+.comment-item .user-info {
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.comment-item .avatar {
+  width: 50rpx;
+  height: 50rpx;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.comment {
+  /*强制换行*/
+  white-space: pre-line;
+  /*超出两行显示省略号*/
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

@@ -51,14 +51,8 @@
   <view class="bg-white padding-sm margin-top-sm" wx:if="{{foodsAryData.length > 0}}">
     <view class="margin-bottom text-lg detail-item-title">相关做法</view>
     <scroll-view scroll-x scroll-with-animation class="scroll-view">
-      <view
-        class="foods-scroll-item"
-        bindtap="enterDelicacyDetail"
-        wx:for="{{foodsAryData}}"
-        wx:for-index="index"
-        wx:for-item="item"
-        wx:key="index"
-        data-id="{{item.id}}">
+      <view class="foods-scroll-item" bindtap="enterDelicacyDetail" wx:for="{{foodsAryData}}" wx:for-index="index"
+        wx:for-item="item" wx:key="index" data-id="{{item.id}}">
         <image src="{{item.coverImgUrl}}"></image>
         <view class="foods-scroll-item-p">{{item.name}}</view>
       </view>
@@ -98,9 +92,9 @@
             <view class="text-price text-grey text-line">{{item.marketPrice}}</view>
           </navigator>
           <view bindtap="addToCart" class="avatar like-add-btn" data-item-index="{{index}}">
-        <image src="/static/images/icon-join.png" style="width:20px;height:20px" role="img"></image>
-        <text wx:if="{{item.number}}" class="tag badge bg-orange">{{item.number}}</text>
-        </view>
+            <image src="/static/images/icon-join.png" style="width:20px;height:20px" role="img"></image>
+            <text wx:if="{{item.number}}" class="tag badge bg-orange">{{item.number}}</text>
+          </view>
           <!--<view class="iconfont iconjian avatar" data-goodsId="{{item.id}}" bindtap="addCart">
           <text wx:if="{{item.number}}" class="tag badge bg-orange">{{item.number}}</text>
           </view>-->
@@ -114,21 +108,28 @@
   <view class="bg-white padding-sm margin-top-sm common-problem">
     <view class="margin-bottom text-lg detail-item-title">常见问题</view>
     <view wx:for="{{issueList}}" wx:key="id" class="margin-bottom common-problem-item">
-      <view class="margin-bottom-xs problem-item-title"><text class="problem-item-title-circle"></text>{{item.question}}</view>
+      <view class="margin-bottom-xs problem-item-title"><text class="problem-item-title-circle"></text>{{item.question}}
+      </view>
       <view class="text-grey text-sm problem-item-content">{{item.answer}}</view>
     </view>
   </view>
-    <!-- 评论 -->
-    <view class="bg-white padding-sm margin-top-sm common-problem">
+  <!-- 评论 -->
+  <view class="bg-white padding-sm margin-top-sm common-problem">
     <view class="margin-bottom text-lg detail-item-title">评论</view>
-    <view wx:for="{{comment}}" wx:key="id" class="margin-bottom common-problem-item">
-      <view class="margin-bottom-xs problem-item-title"><text class="problem-item-title-circle"></text>{{item.com_content}}</view>
-      <view class="text-grey text-sm problem-item-content">{{item.com_score}}</view>
-      <view class="text-grey text-sm problem-item-content">{{item.com_t_score}}</view>
-      <view class="text-grey text-sm problem-item-content">{{item.com_a_score}}</view>
-      <view class="text-grey text-sm problem-item-content">{{item.add_time}}</view>
-      <view class="text-grey text-sm problem-item-content">{{item.username}}</view>
-      <image class="goodsImg" src="{{item.avatar}}"></image>
+    <view wx:for="{{comment}}" wx:key="id" class="comment-item">
+      <view class="user-info">
+        <image class="avatar" src="{{item.avatar}}"></image>
+        <text class="nickname">{{item.username}}</text>
+      </view>
+      <text class="comment">{{item.com_content}}</text>
+      <!-- <view class="margin-bottom-xs problem-item-title"><text -->
+          <!-- class="problem-item-title-circle"></text>{{item.com_content}}</view> -->
+      <view class="text-grey text-sm problem-item-content">总评分:{{item.com_score}}</view>
+      <view class="text-grey text-sm problem-item-content">口感评分:{{item.com_t_score}}</view>
+      <view class="text-grey text-sm problem-item-content">外观评分:{{item.com_a_score}}</view>
+      <view class="text-grey text-sm problem-item-content">评论时间:{{item.add_time}}</view>
+      <!-- <view class="text-grey text-sm problem-item-content">{{item.username}}</view> -->
+      <!-- <image class="goodsImg" src="{{item.avatar}}"></image> -->
       <!-- <view class="text-grey text-sm problem-item-content">{{item.avatar}}</view> -->
     </view>
   </view>
@@ -156,7 +157,9 @@
       <view class="spec-item" wx:for="{{specificationList}}" wx:key="name">
         <view class="name">{{item.name}}</view>
         <view class="values">
-          <view class="value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.valueList}}" wx:for-item="vitem" wx:key="specification" data-value-id="{{vitem.id}}" data-name="{{vitem.specification}}">{{vitem.value}}</view>
+          <view class="value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.valueList}}"
+            wx:for-item="vitem" wx:key="specification" data-value-id="{{vitem.id}}" data-name="{{vitem.specification}}">
+            {{vitem.value}}</view>
         </view>
       </view>
 
