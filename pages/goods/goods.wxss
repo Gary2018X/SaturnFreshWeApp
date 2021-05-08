@@ -512,4 +512,24 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  font-size: 30rpx;
+}
+.flex5{
+  display: flex;
+  width: 100%;
+  height: auto;
+  
+}
+/* 评分 */
+
+.star image {
+  width: 40rpx;
+  height: 40rpx;
+  
+}
+.stars{
+  display: flex;
+  margin-left: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
 }

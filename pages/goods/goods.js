@@ -40,6 +40,15 @@ Page({
 
     foodsAryData: [],
     showTopBtn: false,
+    flag: [0, 0, 0],
+    stardata: [1, 2, 3, 4, 5],
+    starclass: [{
+      index: 0,
+      name: "口感评分",
+    }, {
+      index: 1,
+      name: "颜值评分",
+    },],
   },
 
   onLoad: function(options) {
@@ -103,6 +112,7 @@ Page({
           attribute: res.data.attribute,
           issueList: res.data.issue,
           comment: res.data.comment.data,
+          flag:[5,4,3],
           specificationList: res.data.specificationList,
           productList: res.data.productList,
           userHasCollect: res.data.userHasCollect,
