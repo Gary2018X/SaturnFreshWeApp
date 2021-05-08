@@ -112,7 +112,6 @@ Page({
           attribute: res.data.attribute,
           issueList: res.data.issue,
           comment: res.data.comment.data,
-          flag:[5,4,3],
           specificationList: res.data.specificationList,
           productList: res.data.productList,
           userHasCollect: res.data.userHasCollect,

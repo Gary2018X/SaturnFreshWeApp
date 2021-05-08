@@ -116,31 +116,31 @@
   <!-- 评论 -->
   <view class="bg-white padding-sm margin-top-sm common-problem">
     <view class="margin-bottom text-lg detail-item-title">评论</view>
-    <view wx:for="{{comment}}" wx:key="id" class="comment-item" wx:for-index="index">
+    <view wx:for="{{comment}}" wx:key="id" class="comment-item" wx:for-item="comment_">
       <view class="user-info">
-        <image class="avatar" src="{{index.avatar}}"></image>
-        <text class="nickname">{{index.username}}</text>
+        <image class="avatar" src="{{comment_.avatar}}"></image>
+        <text class="nickname">{{comment_.username}}</text>
       </view>
       
       <!-- <view class="margin-bottom-xs problem-item-title"><text -->
       <!-- class="problem-item-title-circle"></text>{{item.com_content}}</view> -->
-      <view class="text-grey text-sm problem-item-content">总评分:{{index.com_score}}</view>
+      <view class="text-grey text-sm problem-item-content">总评分:</view>
       <view class="flex star">
-        <image class='stars' data-no="{{item}}" wx:for="{{stardata}}" wx:key="id" wx:for-index="childindex"
-          src="{{childindex.com_score>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
+        <image class='stars' data-no="{{item}}" wx:for="{{stardata}}" wx:key="id" 
+          src="{{comment_.com_score>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
       </view>
-      <view class="text-grey text-sm problem-item-content">口感评分:{{index.com_t_score}}</view>
-      <view class="flex star">
-        <image class='stars' data-no="{{item}}" wx:for="{{stardata}}" wx:key="id"
-          src="{{item.com_t_score>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
-      </view>
-      <view class="text-grey text-sm problem-item-content">外观评分:{{index.com_a_score}}</view>
+      <view class="text-grey text-sm problem-item-content">口感评分:</view>
       <view class="flex star">
         <image class='stars' data-no="{{item}}" wx:for="{{stardata}}" wx:key="id"
-          src="{{item.com_a_score>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
+          src="{{comment_.com_t_score>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
       </view>
-      <text class="comment">{{index.com_content}}</text>
-      <view class="text-grey text-sm problem-item-content">评论时间:{{index.add_time}}</view>
+      <view class="text-grey text-sm problem-item-content">外观评分:</view>
+      <view class="flex star">
+        <image class='stars' data-no="{{item}}" wx:for="{{stardata}}" wx:key="id"
+          src="{{comment_.com_a_score>=item? '../../static/images/star1.png': '../../static/images/star0.png'}}" />
+      </view>
+      <text class="comment">{{comment_.com_content}}</text>
+      <view class="text-grey text-sm problem-item-content">评论时间:{{comment_.add_time}}</view>
       <!-- <view class="text-grey text-sm problem-item-content">{{item.username}}</view> -->
       <!-- <image class="goodsImg" src="{{item.avatar}}"></image> -->
       <!-- <view class="text-grey text-sm problem-item-content">{{item.avatar}}</view> -->
