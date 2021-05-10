@@ -141,6 +141,7 @@
       </view>
       <text class="comment">{{comment_.com_content}}</text>
       <view class="text-grey text-sm problem-item-content">评论时间:{{comment_.add_time}}</view>
+      <view class="divLine"></view>
       <!-- <view class="text-grey text-sm problem-item-content">{{item.username}}</view> -->
       <!-- <image class="goodsImg" src="{{item.avatar}}"></image> -->
       <!-- <view class="text-grey text-sm problem-item-content">{{item.avatar}}</view> -->
