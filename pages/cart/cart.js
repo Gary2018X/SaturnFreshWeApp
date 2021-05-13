@@ -421,11 +421,11 @@ Page({
       isFlashGoods: cartItem.isFlashGoods // 1是秒杀商品 0 不是
     }, 'POST').then(res => {
       // console.log(res);
-      if(res.errno == 711) {
+      if(res.errno == 40016) {
         wx.showToast({
-          title: '库存不足',
-          icon: 'none',
-          duration: 1000
+          image: '/static/images/icon_error.png',
+          title: res.errmsg,
+          mask: true
         });
         let itemIndex = event.target.dataset.itemIndex;
         let cartItem = that.data.cartGoods[itemIndex];
