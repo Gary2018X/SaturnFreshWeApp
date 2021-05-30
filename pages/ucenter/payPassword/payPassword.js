@@ -85,6 +85,9 @@ Page({
           title: '操作成功',
           duration: 2000,
         });
+        wx.switchTab({
+          url: "/pages/ucenter/index/index"
+        });
       }
     });
   }
