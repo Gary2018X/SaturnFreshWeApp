@@ -95,7 +95,8 @@
       <image src="/static/images/my-set-icon.png" class="service-icon"></image>
       <view class='text-grey text-sm'>我的设置</view>
     </view>
-    <view class="margin-tb" bindtap='goCollect'>
+    <view class="margin-tb">
+    <!--  bindtap='goCollect' -->
       <image src="/static/images/star-icon.png" class="service-icon"></image>
       <view class='text-grey text-sm'>我的收藏</view>
     </view>
